@@ -2,5 +2,6 @@
     Property Fecha As DateTime
     Property Estado As TO_Estado
     Property Cliente As TO_Cliente
-    Property listaPlatos As List(Of TO_Plato)
+    Property DetallePedido As List(Of TO_DetallePedido)
+    Property NumeroPedido As Int16
 End Class
