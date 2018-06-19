@@ -61,9 +61,8 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL_Administrador.vb" />
     <Compile Include="BL_Cliente.vb" />
-    <Compile Include="BL_MiembroDeCocina.vb" />
+    <Compile Include="BL_DetallePedido.vb" />
     <Compile Include="BL_Plato.vb" />
     <Compile Include="BL_Usuario.vb" />
     <Compile Include="BL_Estado.vb" />
