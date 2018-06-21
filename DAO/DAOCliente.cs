@@ -20,27 +20,5 @@ namespace DAO
                 toCliente.Correo = cliente.First().Correo;
             }
         }
-
-        public void generarPedido(TO_Pedido toPedido) {
-            Pedido pedido = new Pedido();
-            pedido.Cliente = toPedido.Cliente.NombreDeUsuario;
-            pedido.Estado = "A_Tiempo";
-            pedido.Fecha = System.DateTime.Now;
-            entidades.SaveChanges();
-
-           //int nextIdentity = Convert.ToInt32(entidades.Database.SqlQuery<decimal>("Select IDENT_CURRENT ('Routing.RouteDescriptionTable')", new object[0]).FirstOrDefault());
-
-            //var x = from c in entidades.Pedido select c;
-            //x.Last().NumeroPedido;
-
-            foreach (TO_DetallePedido toDetallePedido in toPedido.DetallePedido)
-            {
-                DetallePedido detallePedido = new DetallePedido();
-                detallePedido.NumeroPedido = pedido.NumeroPedido;
-                //detallePedido.CodigoPlato = toDetallePedido.Plato;
-                detallePedido.Cantidad = toDetallePedido.Cantidad;
-                entidades.SaveChanges();
-            }
-        }
     }
 }
