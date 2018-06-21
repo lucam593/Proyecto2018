@@ -27,6 +27,15 @@ namespace DAO
             return toplatos;
         }
 
+        public TO_Plato cargarPlato(Int16 codigo)
+        {
+            var ent = new ProyectoEntidades();
+            var consulta = from c in ent.Platoes where c.Codigo_Plato == codigo  select c;
+            var plato = consulta.FirstOrDefault();
+
+            return new TO_Plato(plato.Codigo_Plato, plato.Nombre, plato.Descripcion, Convert.ToDouble(plato.Precio), plato.Fotografia, plato.Habilitado);
+        }
+
 
     }
 }
