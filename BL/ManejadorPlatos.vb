@@ -7,7 +7,7 @@ Public Class ManejadorPlatos
         Dim daoplatos As New DAOPlato()
         Dim platos As New List(Of BL_Plato)
         For Each x In daoplatos.cargarPlatos()
-            platos.Add(New BL_Plato(x.Nombre, x.Descripcion, x.Precio, x.Fotografia, x.Habilitado))
+            platos.Add(New BL_Plato(x.CodigoPlato, x.Nombre, x.Descripcion, x.Precio, x.Fotografia, x.Habilitado))
         Next
         Return platos
     End Function

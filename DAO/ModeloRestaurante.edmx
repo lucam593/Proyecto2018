@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RestauranteModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="NombreUsuario" />
@@ -18,10 +18,10 @@
         <EntityType Name="DetallePedido">
           <Key>
             <PropertyRef Name="NumeroPedido" />
-            <PropertyRef Name="Plato" />
+            <PropertyRef Name="Codigo_Plato" />
           </Key>
           <Property Name="NumeroPedido" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Plato" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Codigo_Plato" Type="smallint" Nullable="false" />
           <Property Name="Cantidad" Type="numeric" Precision="8" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="Estado">
@@ -43,8 +43,9 @@
         </EntityType>
         <EntityType Name="Plato">
           <Key>
-            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Codigo_Plato" />
           </Key>
+          <Property Name="Codigo_Plato" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="270" Nullable="false" />
           <Property Name="Precio" Type="numeric" Precision="8" Scale="2" Nullable="false" />
@@ -88,10 +89,10 @@
           <End Role="DetallePedido" Type="Self.DetallePedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Plato">
-              <PropertyRef Name="Nombre" />
+              <PropertyRef Name="Codigo_Plato" />
             </Principal>
             <Dependent Role="DetallePedido">
-              <PropertyRef Name="Plato" />
+              <PropertyRef Name="Codigo_Plato" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -119,7 +120,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProyectoModelStoreContainer">
+        <EntityContainer Name="RestauranteModeloStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
@@ -147,10 +148,11 @@
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RestauranteModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="NombreUsuario" />
@@ -161,18 +163,18 @@
           <Property Name="Nombre_Completo" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
           <Property Name="Correo" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Cliente_Usuario" FromRole="Cliente" ToRole="Usuario" />
-          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Cliente" FromRole="Cliente" ToRole="Pedido" />
+          <NavigationProperty Name="Pedidoes" Relationship="Self.FK_Pedido_Cliente" FromRole="Cliente" ToRole="Pedido" />
         </EntityType>
         <EntityType Name="DetallePedido">
           <Key>
             <PropertyRef Name="NumeroPedido" />
-            <PropertyRef Name="Plato" />
+            <PropertyRef Name="Codigo_Plato" />
           </Key>
           <Property Name="NumeroPedido" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Plato" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Codigo_Plato" Type="Int16" Nullable="false" />
           <Property Name="Cantidad" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
           <NavigationProperty Name="Pedido" Relationship="Self.FK_DetallePedido_Pedido" FromRole="DetallePedido" ToRole="Pedido" />
-          <NavigationProperty Name="Plato1" Relationship="Self.FK_DetallePedido_Plato" FromRole="DetallePedido" ToRole="Plato" />
+          <NavigationProperty Name="Plato" Relationship="Self.FK_DetallePedido_Plato" FromRole="DetallePedido" ToRole="Plato" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
@@ -181,7 +183,7 @@
           <Property Name="NombreEstado" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="LimiteMinutos" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
           <Property Name="Indice" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
-          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Estado" FromRole="Estado" ToRole="Pedido" />
+          <NavigationProperty Name="Pedidoes" Relationship="Self.FK_Pedido_Estado" FromRole="Estado" ToRole="Pedido" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -192,19 +194,20 @@
           <Property Name="Estado" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Cliente1" Relationship="Self.FK_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
-          <NavigationProperty Name="DetallePedido" Relationship="Self.FK_DetallePedido_Pedido" FromRole="Pedido" ToRole="DetallePedido" />
+          <NavigationProperty Name="DetallePedidoes" Relationship="Self.FK_DetallePedido_Pedido" FromRole="Pedido" ToRole="DetallePedido" />
           <NavigationProperty Name="Estado1" Relationship="Self.FK_Pedido_Estado" FromRole="Pedido" ToRole="Estado" />
         </EntityType>
         <EntityType Name="Plato">
           <Key>
-            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Codigo_Plato" />
           </Key>
+          <Property Name="Codigo_Plato" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="270" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Precio" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="Fotografia" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Habilitado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="DetallePedido" Relationship="Self.FK_DetallePedido_Plato" FromRole="Plato" ToRole="DetallePedido" />
+          <NavigationProperty Name="DetallePedidoes" Relationship="Self.FK_DetallePedido_Plato" FromRole="Plato" ToRole="DetallePedido" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -256,10 +259,10 @@
           <End Role="DetallePedido" Type="Self.DetallePedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Plato">
-              <PropertyRef Name="Nombre" />
+              <PropertyRef Name="Codigo_Plato" />
             </Principal>
             <Dependent Role="DetallePedido">
-              <PropertyRef Name="Plato" />
+              <PropertyRef Name="Codigo_Plato" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -275,32 +278,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
-          <EntitySet Name="DetallePedido" EntityType="Self.DetallePedido" />
-          <EntitySet Name="Estado" EntityType="Self.Estado" />
-          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
-          <EntitySet Name="Plato" EntityType="Self.Plato" />
-          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+        <EntityContainer Name="ProyectoEntidades" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="DetallePedidoes" EntityType="Self.DetallePedido" />
+          <EntitySet Name="Estadoes" EntityType="Self.Estado" />
+          <EntitySet Name="Pedidoes" EntityType="Self.Pedido" />
+          <EntitySet Name="Platoes" EntityType="Self.Plato" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <AssociationSet Name="FK_Cliente_Usuario" Association="Self.FK_Cliente_Usuario">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Cliente" EntitySet="Clientes" />
           </AssociationSet>
           <AssociationSet Name="FK_Pedido_Cliente" Association="Self.FK_Pedido_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Pedido" EntitySet="Pedidoes" />
           </AssociationSet>
           <AssociationSet Name="FK_DetallePedido_Pedido" Association="Self.FK_DetallePedido_Pedido">
-            <End Role="Pedido" EntitySet="Pedido" />
-            <End Role="DetallePedido" EntitySet="DetallePedido" />
+            <End Role="Pedido" EntitySet="Pedidoes" />
+            <End Role="DetallePedido" EntitySet="DetallePedidoes" />
           </AssociationSet>
           <AssociationSet Name="FK_DetallePedido_Plato" Association="Self.FK_DetallePedido_Plato">
-            <End Role="Plato" EntitySet="Plato" />
-            <End Role="DetallePedido" EntitySet="DetallePedido" />
+            <End Role="Plato" EntitySet="Platoes" />
+            <End Role="DetallePedido" EntitySet="DetallePedidoes" />
           </AssociationSet>
           <AssociationSet Name="FK_Pedido_Estado" Association="Self.FK_Pedido_Estado">
-            <End Role="Estado" EntitySet="Estado" />
-            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Estado" EntitySet="Estadoes" />
+            <End Role="Pedido" EntitySet="Pedidoes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -308,9 +311,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProyectoModelStoreContainer" CdmEntityContainer="ProyectoEntities">
-          <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="ProyectoModel.Cliente">
+        <EntityContainerMapping StorageEntityContainer="RestauranteModeloStoreContainer" CdmEntityContainer="ProyectoEntidades">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="RestauranteModelo.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
                 <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
@@ -320,17 +323,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetallePedido">
-            <EntityTypeMapping TypeName="ProyectoModel.DetallePedido">
+          <EntitySetMapping Name="DetallePedidoes">
+            <EntityTypeMapping TypeName="RestauranteModelo.DetallePedido">
               <MappingFragment StoreEntitySet="DetallePedido">
                 <ScalarProperty Name="NumeroPedido" ColumnName="NumeroPedido" />
-                <ScalarProperty Name="Plato" ColumnName="Plato" />
+                <ScalarProperty Name="Codigo_Plato" ColumnName="Codigo_Plato" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Estado">
-            <EntityTypeMapping TypeName="ProyectoModel.Estado">
+          <EntitySetMapping Name="Estadoes">
+            <EntityTypeMapping TypeName="RestauranteModelo.Estado">
               <MappingFragment StoreEntitySet="Estado">
                 <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
                 <ScalarProperty Name="LimiteMinutos" ColumnName="LimiteMinutos" />
@@ -338,8 +341,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pedido">
-            <EntityTypeMapping TypeName="ProyectoModel.Pedido">
+          <EntitySetMapping Name="Pedidoes">
+            <EntityTypeMapping TypeName="RestauranteModelo.Pedido">
               <MappingFragment StoreEntitySet="Pedido">
                 <ScalarProperty Name="NumeroPedido" ColumnName="NumeroPedido" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
@@ -348,9 +351,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Plato">
-            <EntityTypeMapping TypeName="ProyectoModel.Plato">
+          <EntitySetMapping Name="Platoes">
+            <EntityTypeMapping TypeName="RestauranteModelo.Plato">
               <MappingFragment StoreEntitySet="Plato">
+                <ScalarProperty Name="Codigo_Plato" ColumnName="Codigo_Plato" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
@@ -359,8 +363,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="ProyectoModel.Usuario">
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="RestauranteModelo.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
                 <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
@@ -382,7 +386,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
