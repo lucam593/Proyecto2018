@@ -17,7 +17,7 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Estado()
         {
-            this.Pedido = new HashSet<Pedido>();
+            this.Pedidoes = new HashSet<Pedido>();
         }
     
         public string NombreEstado { get; set; }
@@ -25,6 +25,6 @@ namespace DAO
         public decimal Indice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido { get; set; }
+        public virtual ICollection<Pedido> Pedidoes { get; set; }
     }
 }

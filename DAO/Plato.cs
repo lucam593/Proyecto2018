@@ -17,9 +17,10 @@ namespace DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Plato()
         {
-            this.DetallePedido = new HashSet<DetallePedido>();
+            this.DetallePedidoes = new HashSet<DetallePedido>();
         }
     
+        public short Codigo_Plato { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
@@ -27,6 +28,6 @@ namespace DAO
         public bool Habilitado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetallePedido> DetallePedido { get; set; }
+        public virtual ICollection<DetallePedido> DetallePedidoes { get; set; }
     }
 }

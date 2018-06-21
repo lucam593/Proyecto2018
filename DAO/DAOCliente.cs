@@ -8,10 +8,10 @@ namespace DAO
 {
     public class DAOCliente
     {
-        ProyectoEntities entidades = new ProyectoEntities();
+        ProyectoEntidades entidades = new ProyectoEntidades();
 
         public void cargarCliente(TO_Cliente toCliente) {
-            var cliente = from cl in entidades.Cliente where cl.NombreUsuario == toCliente.NombreDeUsuario select cl;
+            var cliente = from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl;
             if (cliente.Count() > 0) 
             {
                 toCliente.Habilitado = cliente.First().Habilitado;
