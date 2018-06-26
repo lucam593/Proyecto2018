@@ -16,6 +16,8 @@ namespace DAO
             pedido.Cliente = toPedido.Cliente.NombreDeUsuario;
             pedido.Estado = "A_Tiempo";
             pedido.Fecha = System.DateTime.Now;
+
+            entidades.Pedidoes.Add(pedido);
             entidades.SaveChanges();
 
             //int nextIdentity = Convert.ToInt32(entidades.Database.SqlQuery<decimal>("Select IDENT_CURRENT ('Routing.RouteDescriptionTable')", new object[0]).FirstOrDefault());
@@ -29,6 +31,8 @@ namespace DAO
                 detallePedido.NumeroPedido = pedido.NumeroPedido;
                 detallePedido.Codigo_Plato = toDetallePedido.Plato.CodigoPlato;
                 detallePedido.Cantidad = toDetallePedido.Cantidad;
+
+                entidades.DetallePedidoes.Add(detallePedido);
                 entidades.SaveChanges();
             }
         }
@@ -42,9 +46,29 @@ namespace DAO
                 foreach (Pedido pedido in pedidos)
                 {
                     TO_Pedido toPedido = new TO_Pedido();
+                    toPedido.Cliente = toCliente;
                     toPedido.NumeroPedido = Convert.ToInt16(pedido.NumeroPedido);
                     toPedido.Estado.NombreEstado = pedido.Estado;
                     toPedido.Fecha = pedido.Fecha;
+                }
+            }
+        }
+
+        public void cargarPedido(TO_Pedido toPedido) {
+            var detallesPedido = from aux in entidades.DetallePedidoes where aux.NumeroPedido == toPedido.NumeroPedido select aux;
+            if (detallesPedido.Count() > 0)
+            {
+                toPedido.DetallePedido = new List<TO_DetallePedido>();
+
+                foreach (DetallePedido detallePedido in detallesPedido)
+                {
+                    TO_DetallePedido toDetallePedido = new TO_DetallePedido();
+                    toDetallePedido.NumeroPedido = Convert.ToInt16(detallePedido.NumeroPedido);
+                    TO_Plato toPlato = new TO_Plato();
+                    toPlato.CodigoPlato = Convert.ToInt16(detallePedido.Codigo_Plato);
+                    toDetallePedido.Plato = toPlato;
+                    toDetallePedido.Cantidad = Convert.ToInt16(detallePedido.Cantidad);
+                    toPedido.DetallePedido.Add(toDetallePedido);
                 }
             }
         }
