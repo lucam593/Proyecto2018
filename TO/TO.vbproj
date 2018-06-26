@@ -80,6 +80,7 @@
     <Compile Include="TO_Cliente.vb" />
     <Compile Include="TO_DetallePedido.vb" />
     <Compile Include="TO_Estado.vb" />
+    <Compile Include="TO_ListaPedidos.vb" />
     <Compile Include="TO_Pedido.vb" />
     <Compile Include="TO_Plato.vb" />
     <Compile Include="TO_Usuario.vb" />
