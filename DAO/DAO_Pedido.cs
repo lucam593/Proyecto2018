@@ -19,7 +19,6 @@ namespace DAO
 
             entidades.Pedidoes.Add(pedido);
             entidades.SaveChanges();
-
             //int nextIdentity = Convert.ToInt32(entidades.Database.SqlQuery<decimal>("Select IDENT_CURRENT ('Routing.RouteDescriptionTable')", new object[0]).FirstOrDefault());
 
             //var x = from c in entidades.Pedido select c;
