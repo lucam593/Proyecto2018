@@ -32,11 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -55,6 +55,8 @@
     </Compile>
     <Compile Include="DAOCliente.cs" />
     <Compile Include="DAOPlato.cs" />
+    <Compile Include="DAO_Pedido.cs" />
+    <Compile Include="DAO_Usuario.cs" />
     <Compile Include="DetallePedido.cs">
       <DependentUpon>ModeloRestaurante.tt</DependentUpon>
     </Compile>
@@ -93,13 +95,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="ModeloRestaurante.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModeloRestaurante.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="ModeloRestaurante.edmx.diagram">
       <DependentUpon>ModeloRestaurante.edmx</DependentUpon>
     </None>
@@ -108,6 +108,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TO\TO.vbproj">
+      <Project>{0ca5cd27-1cfa-433b-87a9-d329e520441e}</Project>
+      <Name>TO</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ModeloRestaurante.Context.tt">
@@ -120,15 +129,6 @@
       <DependentUpon>ModeloRestaurante.edmx</DependentUpon>
       <LastGenOutput>ModeloRestaurante.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TO\TO.vbproj">
-      <Project>{0ca5cd27-1cfa-433b-87a9-d329e520441e}</Project>
-      <Name>TO</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

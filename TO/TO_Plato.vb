@@ -1,4 +1,5 @@
 ﻿Public Class TO_Plato
+    Property CodigoPlato As Int16
     Property Nombre As String
     Property Descripcion As String
     Property Precio As Double
@@ -9,7 +10,8 @@
 
     End Sub
 
-    Sub New(nombre As String, desc As String, precio As Double, foto As String, hab As Boolean)
+    Sub New(codigoPlato As Int16, nombre As String, desc As String, precio As Double, foto As String, hab As Boolean)
+        Me.CodigoPlato = codigoPlato
         Me.Nombre = nombre
         Me.Descripcion = desc
         Me.Precio = precio

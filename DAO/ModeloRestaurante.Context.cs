@@ -13,10 +13,10 @@ namespace DAO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ProyectoEntities : DbContext
+    public partial class ProyectoEntidades : DbContext
     {
-        public ProyectoEntities()
-            : base("name=ProyectoEntities")
+        public ProyectoEntidades()
+            : base("name=ProyectoEntidades")
         {
         }
     
@@ -25,11 +25,11 @@ namespace DAO
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<DetallePedido> DetallePedido { get; set; }
-        public virtual DbSet<Estado> Estado { get; set; }
-        public virtual DbSet<Pedido> Pedido { get; set; }
-        public virtual DbSet<Plato> Plato { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Cliente> Clientes { get; set; }
+        public virtual DbSet<DetallePedido> DetallePedidoes { get; set; }
+        public virtual DbSet<Estado> Estadoes { get; set; }
+        public virtual DbSet<Pedido> Pedidoes { get; set; }
+        public virtual DbSet<Plato> Platoes { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

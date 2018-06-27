@@ -2,10 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TO;
 
 namespace DAO
 {
-    class DAOCliente
+    public class DAOCliente
     {
+        ProyectoEntidades entidades = new ProyectoEntidades();
+
+        public void cargarCliente(TO_Cliente toCliente) {
+            Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
+                toCliente.Habilitado = cliente.Habilitado;
+                toCliente.Direccion = cliente.Direccion;
+                toCliente.NombreCompleto = cliente.Nombre_Completo;
+                toCliente.Correo = cliente.Correo;
+        }
+
+        public void insertarCliente(TO_Cliente toCliente)
+        {
+
+            DAO_Usuario user = new DAO_Usuario();
+            user.insertarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, "Cliente", entidades);
+
+            Cliente cliente = new Cliente();
+            cliente.NombreUsuario = toCliente.NombreDeUsuario;
+
+            cliente.Correo = toCliente.Correo;
+            cliente.Direccion = toCliente.Direccion;
+            cliente.Habilitado = toCliente.Habilitado;
+            cliente.Nombre_Completo = toCliente.NombreCompleto;
+            
+            entidades.Clientes.Add(cliente);
+            entidades.SaveChanges();
+        }
+
+        public void modificarCliente(TO_Cliente toCliente, string nuevoNombreUsuario, string nuevoPassword)
+        {
+            Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
+            cliente.NombreUsuario = nuevoNombreUsuario;
+            DAO_Usuario user = new DAO_Usuario();
+            user.modificarUsuario(toCliente.NombreDeUsuario, nuevoNombreUsuario, nuevoPassword, entidades);
+            entidades.SaveChanges();
+        }
     }
 }

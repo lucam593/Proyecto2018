@@ -15,10 +15,10 @@ namespace DAO
     public partial class DetallePedido
     {
         public decimal NumeroPedido { get; set; }
-        public string Plato { get; set; }
+        public short Codigo_Plato { get; set; }
         public decimal Cantidad { get; set; }
     
         public virtual Pedido Pedido { get; set; }
-        public virtual Plato Plato1 { get; set; }
+        public virtual Plato Plato { get; set; }
     }
 }
