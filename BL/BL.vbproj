@@ -68,6 +68,7 @@
     <Compile Include="BL_Usuario.vb" />
     <Compile Include="BL_Estado.vb" />
     <Compile Include="ManejadorPlatos.vb" />
+    <Compile Include="Manejador_Pedido.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
