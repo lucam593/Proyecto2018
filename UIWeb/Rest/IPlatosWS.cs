@@ -15,9 +15,10 @@ namespace UIWeb.Rest
     {
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        List<BL_Plato> listaPlaots();
+        List<BL_Plato> listaPlatos();
 
         [OperationContract]
+        [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         BL_Plato plato(Int16 cod);
     }
 }

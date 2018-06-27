@@ -12,7 +12,7 @@ namespace UIWeb.Rest
     // NOTE: In order to launch WCF Test Client for testing this service, please select PlatosWS.svc or PlatosWS.svc.cs at the Solution Explorer and start debugging.
     public class PlatosWS : IPlatosWS
     {
-        public List<BL_Plato> listaPlaots()
+        public List<BL_Plato> listaPlatos()
         {
             ManejadorPlatos platos = new ManejadorPlatos();
             return platos.cargarPlatos();
