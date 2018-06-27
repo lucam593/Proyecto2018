@@ -11,8 +11,6 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TO", "TO\TO.vbproj", "{0CA5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{6633FB3E-7313-445B-99DF-A01DEB3199DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServices", "WebServices\WebServices.csproj", "{3EE7C0BE-B919-46C1-B794-080C8B1CE55A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{6633FB3E-7313-445B-99DF-A01DEB3199DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6633FB3E-7313-445B-99DF-A01DEB3199DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6633FB3E-7313-445B-99DF-A01DEB3199DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3EE7C0BE-B919-46C1-B794-080C8B1CE55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3EE7C0BE-B919-46C1-B794-080C8B1CE55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3EE7C0BE-B919-46C1-B794-080C8B1CE55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3EE7C0BE-B919-46C1-B794-080C8B1CE55A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
