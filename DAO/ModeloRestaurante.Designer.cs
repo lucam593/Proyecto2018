@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Gustavo\Documents\ProyectoLenguajes\Proyecto2018\DAO\ModeloRestaurante.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Luis\Documents\Visual Studio 2015\Projects\Proyecto2018\DAO\ModeloRestaurante.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
