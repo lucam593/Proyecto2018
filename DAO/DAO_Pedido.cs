@@ -10,7 +10,7 @@ namespace DAO
     {
         ProyectoEntidades entidades = new ProyectoEntidades();
 
-        public void generarPedido(TO_Pedido toPedido)
+        public void insertarPedido(TO_Pedido toPedido)
         {
             Pedido pedido = new Pedido();
             pedido.Cliente = toPedido.Cliente.NombreDeUsuario;

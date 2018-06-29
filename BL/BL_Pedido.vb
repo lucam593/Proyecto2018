@@ -21,10 +21,36 @@ Public Class BL_Pedido
 
     Public Sub ingresarPedido()
         Dim toPedido As New TO_Pedido()
-
+        toPedido = Me.Crear_TO_Pedido()
+        Dim daoPedido As New DAO_Pedido()
+        daoPedido.insertarPedido(toPedido)
     End Sub
 
-    Public Sub igualarToPedidoAPedido() 'As TO_Pedido
+
+    Public Sub IgualarDesdeTO_Pedido(toPedido As TO_Pedido)
+        Me.NumeroPedido = toPedido.NumeroPedido
+
+        Me.Fecha = toPedido.Fecha
+
+        Dim estado As New BL_Estado()
+        estado.AsignarDesdeTOEstado(toPedido.Estado)
+        Me.Estado = estado
+
+        Dim cliente As New BL_Cliente()
+        cliente.AsignarDesdeTOCliente(toPedido.Cliente)
+        Me.Cliente = cliente
+
+        If toPedido.DetallePedido IsNot Nothing Then
+            Me.DetallePedido = New List(Of BL_DetallePedido)
+            For Each toDetalle As TO_DetallePedido In toPedido.DetallePedido
+                Dim blDetalle As New BL_DetallePedido()
+                blDetalle.AsignarDesdeTODetallePedido(toDetalle)
+                Me.DetallePedido.Add(blDetalle)
+            Next
+        End If
+    End Sub
+
+    Public Function Crear_TO_Pedido() As TO_Pedido
         Dim toPedido As New TO_Pedido()
 
         toPedido.NumeroPedido = Me.NumeroPedido
@@ -37,8 +63,17 @@ Public Class BL_Pedido
 
         Dim cliente As New TO_Cliente()
         cliente = Me.Cliente.Crear_To_Cliente()
+        toPedido.Cliente = cliente
 
-        'For Each
+        If Me.DetallePedido IsNot Nothing Then
+            toPedido.DetallePedido = New List(Of TO_DetallePedido)
+            For Each detallePedido As BL_DetallePedido In Me.DetallePedido
+                Dim toDetalle As New TO_DetallePedido()
+                toDetalle = detallePedido.Crear_To_DetallePedido()
+                toPedido.DetallePedido.Add(toDetalle)
+            Next
+        End If
 
-    End Sub 'Function
+        Return toPedido
+    End Function
 End Class
