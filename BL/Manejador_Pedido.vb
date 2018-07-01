@@ -21,4 +21,18 @@ Public Class Manejador_Pedido
             Me.listaPedidos.Add(blPedido)
         Next
     End Sub
+
+    Public Sub cargarPedidosCocina()
+        Me.listaPedidos = New List(Of BL_Pedido)
+        Dim toListaPedidos As New TO_ListaPedidos()
+
+        Dim daoPedido As New DAO_Pedido()
+        daoPedido.cargarPedidosCocina(toListaPedidos)
+
+        For Each toPedido As TO_Pedido In toListaPedidos.listaPedidos
+            Dim blPedido As New BL_Pedido()
+            blPedido.IgualarDesdeTO_Pedido(toPedido)
+            Me.listaPedidos.Add(blPedido)
+        Next
+    End Sub
 End Class

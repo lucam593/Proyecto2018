@@ -53,6 +53,23 @@ namespace DAO
             }
         }
 
+        public void cargarPedidosCocina(TO_ListaPedidos listaPedidos)
+        {
+            listaPedidos.listaPedidos = new List<TO_Pedido>();
+            var pedidos = from aux in entidades.Pedidoes where aux.Estado != "Anulado" && aux.Estado != "Entregado" select aux;
+            if (pedidos.Count() > 0)
+            {
+                foreach (Pedido pedido in pedidos)
+                {
+                    TO_Pedido toPedido = new TO_Pedido();
+                    toPedido.Cliente.NombreDeUsuario = pedido.Cliente;
+                    toPedido.NumeroPedido = Convert.ToInt16(pedido.NumeroPedido);
+                    toPedido.Estado.NombreEstado = pedido.Estado;
+                    toPedido.Fecha = pedido.Fecha;
+                }
+            }
+        }
+
         public void cargarPedido(TO_Pedido toPedido) {
             var detallesPedido = from aux in entidades.DetallePedidoes where aux.NumeroPedido == toPedido.NumeroPedido select aux;
             if (detallesPedido.Count() > 0)

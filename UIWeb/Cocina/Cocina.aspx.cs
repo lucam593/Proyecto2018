@@ -17,8 +17,22 @@ namespace UIWeb.Cocina
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            BL_Usuario blUser = new BL_Usuario();
-            
+            try
+            {
+                BL_Usuario blUser = new BL_Usuario();
+                blUser.NombreDeUsuario = TextBox1.Text.Trim();
+                blUser.Contrasena = TextBox2.Text.Trim();
+                blUser.Rol = "Cocina";
+                blUser.seleccionarUsuario();
+                Response.Redirect("www.google.com");
+            }
+            catch (Exception ex)
+            {
+                errorLabel.Text = ex.ToString();
+            }
+
+
+
         }
     }
 }
