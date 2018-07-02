@@ -36,6 +36,45 @@ Public Class BL_Pedido
         daoPedido.insertarPedido(toPedido)
     End Sub
 
+    Public Sub actualizarEstado()
+
+        If Me.Estado.NombreEstado <> "Demorado" Then
+            If Me.Fecha = Me.Fecha.AddMinutes(Me.Estado.LimiteMinutos) Then
+
+                Dim toPedido As New TO_Pedido
+                toPedido = Me.Crear_TO_Pedido()
+
+                Dim daoPedido As New DAO_Pedido()
+                daoPedido.cambiarSiguienteEstado(toPedido)
+
+                Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
+            End If
+        End If
+    End Sub
+
+    Public Sub entregarPlato()
+        Dim toPedido As New TO_Pedido
+        toPedido = Me.Crear_TO_Pedido()
+
+        toPedido.Estado.Indice = 3
+
+        Dim daoPedido As New DAO_Pedido()
+        daoPedido.cambiarSiguienteEstado(toPedido)
+
+        Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
+    End Sub
+
+    Public Sub anularPlato()
+        Dim toPedido As New TO_Pedido
+        toPedido = Me.Crear_TO_Pedido()
+
+        toPedido.Estado.Indice = 4
+
+        Dim daoPedido As New DAO_Pedido()
+        daoPedido.cambiarSiguienteEstado(toPedido)
+
+        Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
+    End Sub
 
     Public Sub IgualarDesdeTO_Pedido(toPedido As TO_Pedido)
         Me.NumeroPedido = toPedido.NumeroPedido
