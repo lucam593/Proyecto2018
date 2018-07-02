@@ -14,7 +14,7 @@ namespace DAO
         {
             Pedido pedido = new Pedido();
             pedido.Cliente = toPedido.Cliente.NombreDeUsuario;
-            pedido.Estado = "A_Tiempo";
+            pedido.Estado = "A Tiempo";
             pedido.Fecha = System.DateTime.Now;
 
             entidades.Pedidoes.Add(pedido);
@@ -97,6 +97,15 @@ namespace DAO
             toPedido.Estado.NombreEstado = siguienteEstado.First().NombreEstado;
             toPedido.Estado.LimiteMinutos = Convert.ToInt16(siguienteEstado.First().LimiteMinutos);
             toPedido.Estado.Indice = Convert.ToInt16(siguienteEstado.First().Indice);
+
+            entidades.SaveChanges();
+        }
+
+        public void alterarEstadoPedido(Int16 numPedido, string estadoAnterior)
+        {
+            var pedido = (from aux in entidades.Pedidoes where aux.NumeroPedido == numPedido select aux).Single();
+
+            pedido.Estado = estadoAnterior;
 
             entidades.SaveChanges();
         }
