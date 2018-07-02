@@ -35,4 +35,9 @@ Public Class Manejador_Pedido
             Me.listaPedidos.Add(blPedido)
         Next
     End Sub
+
+    Public Sub entregarPedido(numeroPedido As Int16)
+
+    End Sub
+
 End Class

@@ -7,6 +7,16 @@ Public Class BL_Pedido
     Property DetallePedido As List(Of BL_DetallePedido)
     Property NumeroPedido As Int16
 
+    Public Sub entregarPedido(numPedido As Int16)
+        Dim daoPedido As New DAO_Pedido
+        daoPedido.alterarEstadoPedido(numPedido, "Entregado")
+    End Sub
+
+    Public Sub revertirEntrega(numPedido As Int16, estadoAnterior As String)
+        Dim daoPedido As New DAO_Pedido
+        daoPedido.alterarEstadoPedido(numPedido, estadoAnterior)
+    End Sub
+
     Public Sub agregarPlato(blPlato As BL_Plato)
         If Me.DetallePedido Is Nothing Then
             Me.DetallePedido = New List(Of BL_DetallePedido)
