@@ -35,4 +35,15 @@ Public Class BL_Plato
         Me.Habilitado = toPlato.Habilitado
     End Sub
 
+    Function asignarAToPlato() As TO_Plato
+        Dim toPlato As New TO_Plato()
+        toPlato.CodigoPlato = Me.Codigo
+        toPlato.Descripcion = Me.Descripcion
+        toPlato.Fotografia = Me.Fotografia
+        toPlato.Nombre = Me.Nombre
+        toPlato.Precio = Me.Precio
+        toPlato.Habilitado = Me.Habilitado
+        Return toPlato
+    End Function
+
 End Class
