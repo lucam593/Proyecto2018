@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMenu.Master" AutoEventWireup="true" CodeBehind="Platos.aspx.cs" Inherits="UIWeb.Platos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminModule/AdminMenu.Master" AutoEventWireup="true" CodeBehind="Platos.aspx.cs" Inherits="UIWeb.AdminModule.Platos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
