@@ -39,7 +39,7 @@ Public Class BL_Pedido
     Public Sub actualizarEstado()
 
         If Me.Estado.NombreEstado <> "Demorado" Then
-            If Me.Fecha = Me.Fecha.AddMinutes(Me.Estado.LimiteMinutos) Then
+            If DateTime.Now = Me.Fecha.AddMinutes(Me.Estado.LimiteMinutos) Then
 
                 Dim toPedido As New TO_Pedido
                 toPedido = Me.Crear_TO_Pedido()

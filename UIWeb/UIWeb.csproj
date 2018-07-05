@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cocina\Cocina.aspx" />
+    <Content Include="Cocina\PedidoCocina.aspx" />
     <Content Include="LoginAdmin.aspx" />
     <Content Include="Platos.aspx" />
     <Content Include="REST\WSPlatos.svc" />
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="Cocina\Cocina.aspx.designer.cs">
       <DependentUpon>Cocina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cocina\PedidoCocina.aspx.cs">
+      <DependentUpon>PedidoCocina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cocina\PedidoCocina.aspx.designer.cs">
+      <DependentUpon>PedidoCocina.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginAdmin.aspx.cs">
       <DependentUpon>LoginAdmin.aspx</DependentUpon>
