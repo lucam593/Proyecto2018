@@ -11,21 +11,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table style="margin:30px">
-        <tr>
-            <td class="auto-style2"></td>
-            <td class="auto-style1"></td>
-            <td class="auto-style1"></td>
-        </tr>
-        <tr>
-            <td class="auto-style2"></td>
-            <td class="auto-style1"></td>
-            <td class="auto-style1"></td>
-        </tr>
-        <tr>
-            <td class="auto-style2"></td>
-            <td class="auto-style1"></td>
-            <td class="auto-style1"></td>
-        </tr>
+    <div class="col-md-offset-3 col-md-6">
+        <table id="tablePedidos" class="table" style="background-color:azure">
+            
     </table>
+    </div>
 </asp:Content>
