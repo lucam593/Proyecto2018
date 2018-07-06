@@ -7,6 +7,11 @@ Public Class BL_Pedido
     Property DetallePedido As List(Of BL_DetallePedido)
     Property NumeroPedido As Int16
 
+    Public Sub New()
+        Me.Estado = New BL_Estado()
+        Me.Cliente = New BL_Cliente()
+    End Sub
+
     Public Sub entregarPedido(numPedido As Int16)
         Dim daoPedido As New DAO_Pedido
         daoPedido.alterarEstadoPedido(numPedido, "Entregado")

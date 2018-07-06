@@ -6,6 +6,10 @@ Public Class BL_DetallePedido
     Property Plato As BL_Plato
     Property Cantidad As Int16
 
+    Public Sub New()
+        Me.Plato = New BL_Plato()
+    End Sub
+
     Public Sub AsignarDesdeTODetallePedido(toDetallePedido As TO_DetallePedido)
         Me.NumeroPedido = toDetallePedido.NumeroPedido
         Dim plato As New BL_Plato()

@@ -16,4 +16,6 @@
             
     </table>
     </div>
+    <asp:DropDownList ID="ddlPrueba" runat="server">
+    </asp:DropDownList>
 </asp:Content>
