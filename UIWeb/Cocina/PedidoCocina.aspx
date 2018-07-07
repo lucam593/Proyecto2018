@@ -8,6 +8,15 @@
             height: 23px;
             width: 238px;
         }
+        .trgreen {
+            background-color: #b3ff99;
+        }
+        .tryellow {
+            background-color: #ffff99;
+        }
+        .trred {
+            background-color: #ffad99;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -19,7 +28,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="col-md-offset-3 col-md-6">
-                <table id="tablePedidos" class="table" style="background-color:aqua">
+                <table id="tablePedidos" class="table">
                     <tr>
                         <th>
                             Numero de pedido
@@ -41,26 +50,26 @@
                             {
                                 string numero = item.NumeroPedido.ToString();
                                 string nombreCliente = item.Cliente.NombreDeUsuario;
-                                string estado = item.Estado.NombreEstado;
+                                string estado = item.Estado.NombreEstado.Trim();
                                 List<BL.BL_DetallePedido> detalles = item.DetallePedido;
                                 string color = "";
 
                                 if (estado.Equals("A Tiempo"))
                                 {
-                                    color = "green";
+                                    color = "trgreen";
                                 }else
 
                                 if (estado.Equals("Sobre Tiempo"))
                                 {
-                                    color = "yellow";
+                                    color = "tryellow";
                                 }else
 
                                 if (estado.Equals("Demorado"))
                                 {
-                                    color = "red";
+                                    color = "trred";
                                 }
                                 %>
-                    <tr id="<%=numero %>">
+                    <tr id="<%=numero %>" class="<%=color%>">
                         <td>
                             <label><%=numero %></label>
                         </td>
