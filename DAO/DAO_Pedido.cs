@@ -84,6 +84,8 @@ namespace DAO
                     toDetallePedido.NumeroPedido = Convert.ToInt16(detallePedido.NumeroPedido);
                     TO_Plato toPlato = new TO_Plato();
                     toPlato.CodigoPlato = Convert.ToInt16(detallePedido.Codigo_Plato);
+                    DAOPlato daoPlato = new DAOPlato();
+                    toPlato = daoPlato.cargarPlato(toPlato.CodigoPlato);
                     toDetallePedido.Plato = toPlato;
                     toDetallePedido.Cantidad = Convert.ToInt16(detallePedido.Cantidad);
                     toPedido.DetallePedido.Add(toDetallePedido);

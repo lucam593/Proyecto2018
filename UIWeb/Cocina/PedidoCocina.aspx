@@ -39,7 +39,8 @@
                                 %>
                     <tr>
                         <td>
-                            <asp:Label ID="Label1" runat="server" Text="<%= numero%>"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                            <%Label1.Text = numero.ToString();%>
                         </td>
                         
                         <td>
