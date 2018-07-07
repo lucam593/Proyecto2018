@@ -10,8 +10,13 @@ namespace UIWeb.Cocina
 {
     public partial class PedidoCocina : System.Web.UI.Page
     {
+        public List<BL_Plato> listOfPlatos;
         protected void Page_Load(object sender, EventArgs e)
         {
+            listOfPlatos = cargarPlatos();
+            
+
+
             //cargarDdl();
         }
 
@@ -24,12 +29,13 @@ namespace UIWeb.Cocina
             ddlPrueba.DataBind();
         }
 
-        //Este es el codigo del boton q llama un plato de la base de datos y lo asigna al label de prueba
-        protected void Button1_Click(object sender, EventArgs e)
+        protected List<BL_Plato> cargarPlatos()
         {
-            BL_Plato blPlato = new BL_Plato();
-            blPlato.cargarPlato(1);
-            Label1.Text = blPlato.Descripcion;
+            List<BL_Plato> listaPlatos = new List<BL_Plato>();
+            ManejadorPlatos platos = new ManejadorPlatos();
+            listaPlatos = platos.cargarPlatos();
+            return listaPlatos;
         }
+
     }
 }

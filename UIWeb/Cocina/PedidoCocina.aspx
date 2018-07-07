@@ -18,19 +18,37 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <%-- Aqui va todo el contenido q va a hacer uso del ajax, osea lo q se quiere cargar sin postback --%>
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-            <br />
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <%-- Aqui termina el contenido --%>
+            <div class="col-md-offset-3 col-md-6">
+                <table id="tablePedidos" class="table" style="background-color:red">
+                    <tr>
+                        <th>
+                            Codigo
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                    </tr>
+                        <%foreach (var item in listOfPlatos)
+                            {
+                                string codi = item.Codigo.ToString();
+                                string nomb = item.Nombre;
+                                %>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label1" runat="server" Text="<%=codi %>"></asp:Label>
+                        </td>
+                        
+                        <td>
+                            <asp:Label ID="Label2" runat="server" Text="<%= nomb %>"></asp:Label>
+                        </td>
+                    </tr>
+                           <% } %>
+                </table>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
-    <div class="col-md-offset-3 col-md-6">
-        <table id="tablePedidos" class="table" style="background-color:azure">
-            
-    </table>
-    </div>
+
     <asp:DropDownList ID="ddlPrueba" runat="server">
     </asp:DropDownList>
 </asp:Content>

@@ -24,7 +24,7 @@ namespace UIWeb.Cocina
                 blUser.Contrasena = TextBox2.Text.Trim();
                 blUser.Rol = "Cocina";
                 blUser.seleccionarUsuario();
-                Response.Redirect("www.google.com");
+                Response.Redirect("PedidoCocina.aspx");
             }
             catch (Exception ex)
             {
