@@ -60,7 +60,7 @@
                                     color = "red";
                                 }
                                 %>
-                    <tr id="<%=numero %>">
+                    <tr>
                         <td>
                             <label><%=numero %></label>
                         </td>
@@ -83,7 +83,7 @@
                         </td>        
                             
                         <td>
-                            <asp:Button ID="Button1" runat="server" Text="Entregar" CommandArgument='<%#Eval("numero") %>' OnCommand="Button1_Click" />
+                            <asp:Button runat="server" Text="Entregar" OnClick="Button1_Click" /><%Session["codPed"] = numero;%>
                         </td>
                     </tr>
                            <% } %>
