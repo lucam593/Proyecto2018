@@ -49,6 +49,7 @@ namespace DAO
                     toPedido.NumeroPedido = Convert.ToInt16(pedido.NumeroPedido);
                     toPedido.Estado.NombreEstado = pedido.Estado;
                     toPedido.Fecha = pedido.Fecha;
+                    listaPedidos.listaPedidos.Add(toPedido);
                 }
             }
         }
@@ -66,7 +67,7 @@ namespace DAO
                     toPedido.NumeroPedido = Convert.ToInt16(pedido.NumeroPedido);
                     toPedido.Estado.NombreEstado = pedido.Estado;
                     toPedido.Fecha = pedido.Fecha;
-                    cargarPedido(toPedido);//Creo que no se puede poner un for each dentro de otro para recorrer consultas porque funcionan con un data reader y no se puede tener dos instanciados
+                    listaPedidos.listaPedidos.Add(toPedido);
                 }
             }
         }
