@@ -10,26 +10,26 @@ namespace UIWeb.Cocina
 {
     public partial class PedidoCocina : System.Web.UI.Page
     {
+        public List<BL_Pedido> listOfPedidos;
         protected void Page_Load(object sender, EventArgs e)
         {
-            cargarDdl();
+            listOfPedidos = cargarDdl();
+            this.Page.DataBind();
         }
 
-        protected void cargarDdl() {
+        protected List<BL_Pedido> cargarDdl() {
             Manejador_Pedido manejadorPedido = new Manejador_Pedido();
             manejadorPedido.cargarPedidosCocina();
-            ddlPrueba.DataSource = manejadorPedido.listaPedidos;
-            ddlPrueba.DataTextField = "NumeroPedido";
-            ddlPrueba.DataValueField = "NumeroPedido";
-            ddlPrueba.DataBind();
+            return manejadorPedido.listaPedidos;
         }
 
-        //Este es el codigo del boton q llama un plato de la base de datos y lo asigna al label de prueba
-        protected void Button1_Click(object sender, EventArgs e)
+        protected List<BL_Plato> cargarPlatos()
         {
-            BL_Plato blPlato = new BL_Plato();
-            blPlato.cargarPlato(1);
-            Label1.Text = blPlato.Descripcion;
+            List<BL_Plato> listaPlatos = new List<BL_Plato>();
+            ManejadorPlatos platos = new ManejadorPlatos();
+            listaPlatos = platos.cargarPlatos();
+            return listaPlatos;
         }
+
     }
 }

@@ -18,19 +18,46 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <%-- Aqui va todo el contenido q va a hacer uso del ajax, osea lo q se quiere cargar sin postback --%>
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-            <br />
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <%-- Aqui termina el contenido --%>
+            <div class="col-md-offset-3 col-md-6">
+                <table id="tablePedidos" class="table" style="background-color:aqua">
+                    <tr>
+                        <th>
+                            Numero de pedido
+                        </th>
+                        <th>
+                            Nombre de cliente
+                        </th>
+                        <th>
+                            Lista de pedidos
+                        </th>
+                    </tr>
+                        <%foreach (var item in listOfPedidos)
+                            {
+                                string numero = item.NumeroPedido.ToString();
+                                string nombreCliente = item.Cliente.NombreDeUsuario;
+                                List<BL.BL_DetallePedido> detalles = item.DetallePedido;
+                                %>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label1" runat="server" Text="<%= numero%>"></asp:Label>
+                        </td>
+                        
+                        <td>
+                            <asp:Label ID="Label2" runat="server" Text="<%= nombreCliente %>"></asp:Label>
+                        </td>
+                        <td>
+                            <%foreach (var plato in detalles)
+                                {%>
+                            <asp:Label ID="Label3" runat="server" Text="x"></asp:Label><br />
+
+                                    
+                                <%} %>
+                        </td>
+                    </tr>
+                           <% } %>
+                </table>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
-    <div class="col-md-offset-3 col-md-6">
-        <table id="tablePedidos" class="table" style="background-color:azure">
-            
-    </table>
-    </div>
-    <asp:DropDownList ID="ddlPrueba" runat="server">
-    </asp:DropDownList>
 </asp:Content>
