@@ -12,7 +12,7 @@ namespace UIWeb.Cocina
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //cargarDdl();
+            cargarDdl();
         }
 
         protected void cargarDdl() {

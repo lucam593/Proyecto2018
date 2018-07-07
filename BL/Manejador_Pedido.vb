@@ -30,6 +30,7 @@ Public Class Manejador_Pedido
         daoPedido.cargarPedidosCocina(toListaPedidos)
 
         For Each toPedido As TO_Pedido In toListaPedidos.listaPedidos
+            daoPedido.cargarPedido(toPedido)
             Dim blPedido As New BL_Pedido()
             blPedido.IgualarDesdeTO_Pedido(toPedido)
             Me.listaPedidos.Add(blPedido)
