@@ -17,6 +17,11 @@ Public Class BL_Pedido
         daoPedido.alterarEstadoPedido(numPedido, "Entregado")
     End Sub
 
+    Public Sub anularPedido(numPedido As Int16)
+        Dim daoPedido As New DAO_Pedido
+        daoPedido.alterarEstadoPedido(numPedido, "Anulado")
+    End Sub
+
     Public Sub revertirEntrega(numPedido As Int16, estadoAnterior As String)
         Dim daoPedido As New DAO_Pedido
         daoPedido.alterarEstadoPedido(numPedido, estadoAnterior)
@@ -29,7 +34,6 @@ Public Class BL_Pedido
 
         Dim detallePedido As New BL_DetallePedido()
         detallePedido.Plato = blPlato
-        detallePedido.NumeroPedido = detallePedido.NumeroPedido
 
         Me.DetallePedido.Add(detallePedido)
     End Sub
@@ -55,30 +59,6 @@ Public Class BL_Pedido
                 Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
             End If
         End If
-    End Sub
-
-    Public Sub entregarPlato()
-        Dim toPedido As New TO_Pedido
-        toPedido = Me.Crear_TO_Pedido()
-
-        toPedido.Estado.Indice = 3
-
-        Dim daoPedido As New DAO_Pedido()
-        daoPedido.cambiarSiguienteEstado(toPedido)
-
-        Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
-    End Sub
-
-    Public Sub anularPlato()
-        Dim toPedido As New TO_Pedido
-        toPedido = Me.Crear_TO_Pedido()
-
-        toPedido.Estado.Indice = 4
-
-        Dim daoPedido As New DAO_Pedido()
-        daoPedido.cambiarSiguienteEstado(toPedido)
-
-        Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
     End Sub
 
     Public Sub IgualarDesdeTO_Pedido(toPedido As TO_Pedido)

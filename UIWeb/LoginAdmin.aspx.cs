@@ -13,5 +13,10 @@ namespace UIWeb
         {
 
         }
+
+        protected void logAdmin_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+
+        }
     }
 }
