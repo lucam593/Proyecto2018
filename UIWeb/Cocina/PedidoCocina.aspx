@@ -48,7 +48,7 @@
                         <td>
                             <%foreach (var plato in detalles)
                                 {%>
-                            <label><%= plato.Plato.Descripcion%></label>
+                            <label><%= plato.Plato.Codigo%></label><br />
 
                                     
                                 <%} %>
