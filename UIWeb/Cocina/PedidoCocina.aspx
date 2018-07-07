@@ -49,7 +49,7 @@
                         <%foreach (var item in listOfPedidos)
                             {
                                 string numero = item.NumeroPedido.ToString();
-                                string nombreCliente = item.Cliente.NombreDeUsuario.Trim();
+                                string nombreCliente = item.Cliente.NombreDeUsuario;
                                 string estado = item.Estado.NombreEstado.Trim();
                                 List<BL.BL_DetallePedido> detalles = item.DetallePedido;
                                 string color = "";
@@ -92,7 +92,7 @@
                         </td>        
                             
                         <td>
-                            <asp:Button runat="server" Text="Entregar" OnClick="Button1_Click" /> <%Session["codPed"] = numero;%>
+                            <asp:Button ID="id" runat="server" Text="Entregar" OnClick="Button1_Click" />
                         </td>
                     </tr>
                            <% } %>

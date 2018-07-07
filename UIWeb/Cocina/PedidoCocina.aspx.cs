@@ -33,7 +33,7 @@ namespace UIWeb.Cocina
         protected void Button1_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            short codPed = short.Parse(Session["codPed"].ToString());
+            short codPed = short.Parse(btn.ID);
             BL_Pedido pedido = new BL_Pedido();
             pedido.entregarPedido(codPed);
         }
