@@ -92,7 +92,7 @@
                         </td>        
                             
                         <td>
-                            <asp:Button runat="server" Text="Entregar" OnClick="Button1_Click" /><%Session["codPed"] = numero;%>
+                            <asp:Button ID="id" runat="server" Text="Entregar" OnClick="Button1_Click" />
                         </td>
                     </tr>
                            <% } %>
