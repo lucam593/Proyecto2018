@@ -10,23 +10,17 @@ namespace UIWeb.Cocina
 {
     public partial class PedidoCocina : System.Web.UI.Page
     {
-        public List<BL_Plato> listOfPlatos;
+        public List<BL_Pedido> listOfPedidos;
         protected void Page_Load(object sender, EventArgs e)
         {
-            listOfPlatos = cargarPlatos();
-            
-
-
-            //cargarDdl();
+            listOfPedidos = cargarDdl();
+            this.Page.DataBind();
         }
 
-        protected void cargarDdl() {
+        protected List<BL_Pedido> cargarDdl() {
             Manejador_Pedido manejadorPedido = new Manejador_Pedido();
             manejadorPedido.cargarPedidosCocina();
-            ddlPrueba.DataSource = manejadorPedido.listaPedidos;
-            ddlPrueba.DataTextField = "NumeroPedido";
-            ddlPrueba.DataValueField = "NumeroPedido";
-            ddlPrueba.DataBind();
+            return manejadorPedido.listaPedidos;
         }
 
         protected List<BL_Plato> cargarPlatos()
