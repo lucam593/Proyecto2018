@@ -12,7 +12,7 @@ namespace UIWeb.Cocina
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            cargarDdl();
+            //cargarDdl();
         }
 
         protected void cargarDdl() {
@@ -22,6 +22,14 @@ namespace UIWeb.Cocina
             ddlPrueba.DataTextField = "NumeroPedido";
             ddlPrueba.DataValueField = "NumeroPedido";
             ddlPrueba.DataBind();
+        }
+
+        //Este es el codigo del boton q llama un plato de la base de datos y lo asigna al label de prueba
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            BL_Plato blPlato = new BL_Plato();
+            blPlato.cargarPlato(1);
+            Label1.Text = blPlato.Descripcion;
         }
     }
 }
