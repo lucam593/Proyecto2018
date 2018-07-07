@@ -24,20 +24,43 @@
                         <th>
                             Numero de pedido
                         </th>
+
                         <th>
                             Nombre de cliente
                         </th>
+                                                
                         <th>
                             Lista de pedidos
+                        </th>
+
+                        <th>
+                            Estado
                         </th>
                     </tr>
                         <%foreach (var item in listOfPedidos)
                             {
                                 string numero = item.NumeroPedido.ToString();
                                 string nombreCliente = item.Cliente.NombreDeUsuario;
+                                string estado = item.Estado.NombreEstado;
                                 List<BL.BL_DetallePedido> detalles = item.DetallePedido;
+                                string color = "";
+
+                                if (estado.Equals("A Tiempo"))
+                                {
+                                    color = "green";
+                                }else
+
+                                if (estado.Equals("Sobre Tiempo"))
+                                {
+                                    color = "yellow";
+                                }else
+
+                                if (estado.Equals("Demorado"))
+                                {
+                                    color = "red";
+                                }
                                 %>
-                    <tr>
+                    <tr id="<%=numero %>">
                         <td>
                             <label><%=numero %></label>
                         </td>
@@ -45,13 +68,22 @@
                         <td>
                             <label><%= nombreCliente %></label>
                         </td>
+                        
                         <td>
                             <%foreach (var plato in detalles)
                                 {%>
-                            <label><%= plato.Plato.Codigo%></label><br />
+                            <label><%= plato.Plato.Descripcion%></label><br />
 
                                     
                                 <%} %>
+                        </td>
+                                                            
+                        <td>
+                            <label><%= estado %></label>
+                        </td>        
+                            
+                        <td>
+                            <asp:Button ID="Button1" runat="server" Text="Entregar" CommandArgument='<%#Eval("numero") %>' OnCommand="Button1_Click" />
                         </td>
                     </tr>
                            <% } %>

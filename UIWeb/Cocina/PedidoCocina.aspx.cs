@@ -14,7 +14,6 @@ namespace UIWeb.Cocina
         protected void Page_Load(object sender, EventArgs e)
         {
             listOfPedidos = cargarDdl();
-            this.Page.DataBind();
         }
 
         protected List<BL_Pedido> cargarDdl() {
@@ -31,5 +30,12 @@ namespace UIWeb.Cocina
             return listaPlatos;
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            short codPed = short.Parse(btn.CommandArgument);
+            BL_Pedido pedido = new BL_Pedido();
+            pedido.entregarPedido(codPed);
+        }
     }
 }
