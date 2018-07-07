@@ -39,17 +39,16 @@
                                 %>
                     <tr>
                         <td>
-                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                            <%Label1.Text = numero.ToString();%>
+                            <label><%=numero %></label>
                         </td>
                         
                         <td>
-                            <asp:Label ID="Label2" runat="server" Text="<%= nombreCliente %>"></asp:Label>
+                            <label><%= nombreCliente %></label>
                         </td>
                         <td>
                             <%foreach (var plato in detalles)
                                 {%>
-                            <asp:Label ID="Label3" runat="server" Text="x"></asp:Label><br />
+                            <label><%= plato.Plato.Codigo%></label><br />
 
                                     
                                 <%} %>
