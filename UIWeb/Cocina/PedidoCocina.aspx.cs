@@ -107,7 +107,9 @@ namespace UIWeb.Cocina
 
         protected void eventoButton(object sender, EventArgs e)
         {
-            Response.Redirect("www.google.com");
+            short idOrden = short.Parse(((Button)sender).ID);
+            BL_Pedido blPedido = new BL_Pedido();
+            blPedido.entregarPedido(idOrden);
         }
 
     }
