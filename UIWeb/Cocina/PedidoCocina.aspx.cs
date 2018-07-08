@@ -90,7 +90,7 @@ namespace UIWeb.Cocina
                 string color = setColor(estado);
                 addRow(numero, nombreCliente, detalles, estado, color);
             }
-            Timer1.Interval = 60000;
+            Timer1.Interval = 15000;
             Timer1.Enabled = true;
         }
 
