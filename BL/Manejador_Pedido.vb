@@ -37,4 +37,10 @@ Public Class Manejador_Pedido
         Next
     End Sub
 
+    Public Sub actualizarEstados()
+        For Each pedido As BL_Pedido In Me.listaPedidos
+            pedido.actualizarEstado()
+        Next
+    End Sub
+
 End Class

@@ -91,6 +91,10 @@ namespace DAO
                     toPedido.DetallePedido.Add(toDetallePedido);
                 }
             }
+
+            var estado = from aux in entidades.Estadoes where aux.NombreEstado == toPedido.Estado.NombreEstado.Trim() select aux;
+            toPedido.Estado.LimiteMinutos = short.Parse(estado.First().LimiteMinutos.ToString());
+            toPedido.Estado.Indice = short.Parse(estado.First().Indice.ToString());
         }
 
         public void cambiarSiguienteEstado(TO_Pedido toPedido) {

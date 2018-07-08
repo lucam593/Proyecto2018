@@ -10,10 +10,9 @@ namespace UIWeb.Cocina
 {
     public partial class PedidoCocina : System.Web.UI.Page
     {
-
-       
         
         public List<BL_Pedido> listOfPedidos;
+
         private string setColor(string estado)
         {
             if (estado.Equals("A Tiempo"))
@@ -34,6 +33,7 @@ namespace UIWeb.Cocina
             }
             return "";
         }
+
         private void crearBoton(Button boton)
         {
             boton.Text = "Entregar";
@@ -42,6 +42,7 @@ namespace UIWeb.Cocina
             boton.Attributes.Add("class", "btn btn-md");
             boton.Click += new System.EventHandler(eventoButton);
         }
+
         private void addRow(string numero, string nombreCliente, List<BL.BL_DetallePedido> detalles, string estado, string color)
         {
 
@@ -76,6 +77,7 @@ namespace UIWeb.Cocina
 
             tablePedidosASP.Rows.Add(row);
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             listOfPedidos = cargarDdl();
@@ -87,10 +89,9 @@ namespace UIWeb.Cocina
                 List<BL.BL_DetallePedido> detalles = item.DetallePedido;
                 string color = setColor(estado);
                 addRow(numero, nombreCliente, detalles, estado, color);
-
-
-               
             }
+            Timer1.Interval = 60000;
+            Timer1.Enabled = true;
         }
 
         protected List<BL_Pedido> cargarDdl() {
@@ -114,5 +115,11 @@ namespace UIWeb.Cocina
             blPedido.entregarPedido(idOrden);
         }
 
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            Manejador_Pedido manejadorPedido = new Manejador_Pedido();
+            manejadorPedido.listaPedidos = this.listOfPedidos;
+            manejadorPedido.actualizarEstados();
+        }
     }
 }
