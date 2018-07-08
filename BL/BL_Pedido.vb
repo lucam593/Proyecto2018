@@ -12,6 +12,15 @@ Public Class BL_Pedido
         Me.Cliente = New BL_Cliente()
     End Sub
 
+    Public Sub cargarPedido()
+        Dim daoPedido As New DAO_Pedido()
+        Dim toPedido As New TO_Pedido()
+        toPedido.NumeroPedido = Me.NumeroPedido
+        daoPedido.cargarPedido(toPedido)
+        IgualarDesdeTO_Pedido(toPedido)
+
+    End Sub
+
     Public Sub entregarPedido(numPedido As Int16)
         Dim daoPedido As New DAO_Pedido
         daoPedido.alterarEstadoPedido(numPedido, "Entregado")

@@ -112,7 +112,12 @@ namespace UIWeb.Cocina
         {
             short idOrden = short.Parse(((Button)sender).ID);
             BL_Pedido blPedido = new BL_Pedido();
+            blPedido.NumeroPedido = idOrden;
+            blPedido.cargarPedido();
+            Session["LastStatus"] = blPedido.Estado.NombreEstado;
+            Session["LastOrder"] = blPedido.NumeroPedido;
             blPedido.entregarPedido(idOrden);
+
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)
@@ -120,6 +125,16 @@ namespace UIWeb.Cocina
             Manejador_Pedido manejadorPedido = new Manejador_Pedido();
             manejadorPedido.listaPedidos = this.listOfPedidos;
             manejadorPedido.actualizarEstados();
+
+        }
+
+        protected void desentrega_Click(object sender, EventArgs e)
+        {
+            if (Session["LastOrder"] != null)
+            {
+                BL_Pedido blPedido = new BL_Pedido();
+                blPedido.revertirEntrega((short)Session["LastOrder"], (string)Session["LastStatus"]);
+            }
         }
     }
 }
