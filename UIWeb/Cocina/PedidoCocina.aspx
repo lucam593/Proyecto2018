@@ -27,6 +27,18 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+            <div class="container text-center">
+                <div class="col-md-offset-3 col-md-6">
+                    <br />
+                    <asp:Button ID="up" runat="server" Text="&uarr;" class="btn btn-primary btn-md" style="width:25%" OnClick="up_Click"/><asp:Button ID="down" runat="server" Text="&darr;" class="btn btn-primary btn-md" style="width:25%" />
+                    <br />
+                     <br />
+                    <asp:Button ID="entrega" runat="server" Text="Entregar" class="btn btn-success" style="width:25%"/><asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger" style="width:25%"/>
+                </div>
+            </div>
+            <br />
+            <br />
+
             <div class="col-md-offset-3 col-md-6">
                 <table id="tablePedidos" class="table">
                     <tr>
@@ -91,9 +103,6 @@
                             <label><%= estado %></label>
                         </td>        
                             
-                        <td>
-                            <asp:Button ID="id" runat="server" Text="Entregar" OnClick="Button1_Click" />
-                        </td>
                     </tr>
                            <% } %>
                 </table>

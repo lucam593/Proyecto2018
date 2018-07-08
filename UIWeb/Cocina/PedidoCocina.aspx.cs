@@ -30,12 +30,9 @@ namespace UIWeb.Cocina
             return listaPlatos;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void up_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            short codPed = short.Parse(btn.ID);
-            BL_Pedido pedido = new BL_Pedido();
-            pedido.entregarPedido(codPed);
+            
         }
     }
 }
