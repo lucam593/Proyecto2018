@@ -38,6 +38,8 @@ namespace UIWeb.Cocina
         {
             boton.Text = "Entregar";
             boton.Style.Add("background-color", "#4CAF50");
+            boton.Style.Add("color", "#ffffff");
+            boton.Attributes.Add("class", "btn btn-md");
             boton.Click += new System.EventHandler(eventoButton);
         }
         private void addRow(string numero, string nombreCliente, List<BL.BL_DetallePedido> detalles, string estado, string color)
