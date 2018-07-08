@@ -29,83 +29,29 @@
         <ContentTemplate>
             <div class="container text-center">
                 <div class="col-md-offset-3 col-md-6">
-                    <br />
-                    <asp:Button ID="up" runat="server" Text="&uarr;" class="btn btn-primary btn-md" style="width:25%" OnClick="up_Click"/><asp:Button ID="down" runat="server" Text="&darr;" class="btn btn-primary btn-md" style="width:25%" />
-                    <br />
-                     <br />
-                    <asp:Button ID="entrega" runat="server" Text="Entregar" class="btn btn-success" style="width:25%"/><asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger" style="width:25%"/>
+                    <asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger" style="width:25%"/>
                 </div>
             </div>
             <br />
             <br />
 
             <div class="col-md-offset-3 col-md-6">
-                <table id="tablePedidos" class="table">
-                    <tr>
-                        <th>
-                            Numero de pedido
-                        </th>
+            
+                <asp:Table ID="tablePedidosASP" runat="server" CssClass="table">
+                    <asp:TableHeaderRow ID="headerRow" CssClass='table'>
+                        <asp:TableHeaderCell Text="Numero de pedido">
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell Text="Nombre de Cliente">
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell Text="Lista de pedidos ">
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell Text="Estado">
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell>
+                        </asp:TableHeaderCell>
 
-                        <th>
-                            Nombre de cliente
-                        </th>
-                                                
-                        <th>
-                            Lista de pedidos
-                        </th>
-
-                        <th>
-                            Estado
-                        </th>
-                    </tr>
-                        <%foreach (var item in listOfPedidos)
-                            {
-                                string numero = item.NumeroPedido.ToString();
-                                string nombreCliente = item.Cliente.NombreDeUsuario;
-                                string estado = item.Estado.NombreEstado.Trim();
-                                List<BL.BL_DetallePedido> detalles = item.DetallePedido;
-                                string color = "";
-
-                                if (estado.Equals("A Tiempo"))
-                                {
-                                    color = "trgreen";
-                                }else
-
-                                if (estado.Equals("Sobre Tiempo"))
-                                {
-                                    color = "tryellow";
-                                }else
-
-                                if (estado.Equals("Demorado"))
-                                {
-                                    color = "trred";
-                                }
-                                %>
-                    <tr id="<%=numero %>" class="<%=color %>"">
-                        <td>
-                            <label><%=numero %></label>
-                        </td>
-                        
-                        <td>
-                            <label><%= nombreCliente %></label>
-                        </td>
-                        
-                        <td>
-                            <%foreach (var plato in detalles)
-                                {%>
-                            <label><%= plato.Plato.Descripcion%></label><br />
-
-                                    
-                                <%} %>
-                        </td>
-                                                            
-                        <td>
-                            <label><%= estado %></label>
-                        </td>        
-                            
-                    </tr>
-                           <% } %>
-                </table>
+                    </asp:TableHeaderRow>
+                </asp:Table>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
