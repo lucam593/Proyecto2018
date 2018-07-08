@@ -47,7 +47,9 @@ Public Class BL_Pedido
 
     Public Sub actualizarEstado()
 
-        If Me.Estado.NombreEstado <> "Demorado" Then
+        If Me.Estado.NombreEstado.Trim() <> "Demorado" And
+           Me.Estado.NombreEstado.Trim() <> "Entregado" And
+           Me.Estado.NombreEstado.Trim() <> "Anulado" Then
             If DateTime.Now >= Me.Fecha.AddMinutes(Me.Estado.LimiteMinutos) Then
 
                 Dim toPedido As New TO_Pedido
