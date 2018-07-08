@@ -18,6 +18,7 @@ Public Class Manejador_Pedido
         For Each toPedido As TO_Pedido In toListaPedidos.listaPedidos
             Dim blPedido As New BL_Pedido()
             blPedido.IgualarDesdeTO_Pedido(toPedido)
+            blPedido.actualizarEstado()
             Me.listaPedidos.Add(blPedido)
         Next
     End Sub

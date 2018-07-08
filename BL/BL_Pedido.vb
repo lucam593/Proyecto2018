@@ -21,6 +21,11 @@ Public Class BL_Pedido
 
     End Sub
 
+    Public Function getEstado() As String
+        Dim daoPedido As New DAO_Pedido()
+        Return daoPedido.getEstado(Me.NumeroPedido)
+    End Function
+
     Public Sub entregarPedido(numPedido As Int16)
         Dim daoPedido As New DAO_Pedido
         daoPedido.alterarEstadoPedido(numPedido, "Entregado")

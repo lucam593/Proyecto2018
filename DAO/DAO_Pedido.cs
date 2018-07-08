@@ -109,6 +109,11 @@ namespace DAO
             entidades.SaveChanges();
         }
 
+        public String getEstado(int numeroPedido) {
+            var pedido = from auxPedido in entidades.Pedidoes where auxPedido.NumeroPedido == numeroPedido select auxPedido;
+            return pedido.First().Estado;
+        }
+
         public void alterarEstadoPedido(Int16 numPedido, string estadoAnterior)
         {
             var pedido = (from aux in entidades.Pedidoes where aux.NumeroPedido == numPedido select aux).Single();

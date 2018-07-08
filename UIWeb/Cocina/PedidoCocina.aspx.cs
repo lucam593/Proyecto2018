@@ -113,8 +113,7 @@ namespace UIWeb.Cocina
             short idOrden = short.Parse(((Button)sender).ID);
             BL_Pedido blPedido = new BL_Pedido();
             blPedido.NumeroPedido = idOrden;
-            blPedido.cargarPedido();
-            Session["LastStatus"] = blPedido.Estado.NombreEstado;
+            Session["LastStatus"] = blPedido.getEstado();
             Session["LastOrder"] = blPedido.NumeroPedido;
             blPedido.entregarPedido(idOrden);
 
