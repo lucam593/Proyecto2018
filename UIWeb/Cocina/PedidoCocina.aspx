@@ -1,6 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="PedidoCocina.aspx.cs" Inherits="UIWeb.Cocina.PedidoCocina" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
+        .myth {
+            background-color: black;
+            color: white;
+            padding: 15px;
+        }
+        .mydiv {
+            background-color: white;
+            padding: 10px;
+        }
+        .cetrar {
+            text-align: center;
+        }
         .auto-style1 {
             height: 23px;
         }
@@ -27,23 +39,17 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="container text-center">
-                <div class="col-md-offset-3 col-md-6">
-                    <asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger" style="width:25%" OnClick="desentrega_Click"/>
-                </div>
-            </div>
             <br />
             <br />
-
-            <div class="col-md-offset-3 col-md-6">
+            <div class="col-md-offset-3 col-md-6 mydiv">
             
-                <asp:Table ID="tablePedidosASP" runat="server" CssClass="table">
-                    <asp:TableHeaderRow ID="headerRow" CssClass='table'>
+                <asp:Table ID="tablePedidosASP" runat="server" CssClass="table table-bordered text-center">
+                    <asp:TableHeaderRow ID="headerRow" CssClass='myth'>
                         <asp:TableHeaderCell Text="Numero de pedido">
                         </asp:TableHeaderCell>
                         <asp:TableHeaderCell Text="Nombre de Cliente">
                         </asp:TableHeaderCell>
-                        <asp:TableHeaderCell Text="Lista de pedidos ">
+                        <asp:TableHeaderCell Text="Lista de pedidos " >
                         </asp:TableHeaderCell>
                         <asp:TableHeaderCell Text="Estado">
                         </asp:TableHeaderCell>
@@ -52,7 +58,15 @@
 
                     </asp:TableHeaderRow>
                 </asp:Table>
+                <br />
+                <br />
+                <div class="container text-center">
+                    <div class="col-md-offset-3 col-md-6">
+                        <asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger" style="width:25%" OnClick="desentrega_Click"/>
+                    </div>
+                </div>
             </div>
+            
         </ContentTemplate>
     </asp:UpdatePanel>
 
