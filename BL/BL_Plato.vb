@@ -1,4 +1,6 @@
-﻿Public Class BL_Plato
+﻿Imports DAO
+Imports [TO]
+Public Class BL_Plato
     Property Codigo As Int16
     Property Nombre As String
     Property Descripcion As String
@@ -17,5 +19,31 @@
         Habilitado = hab
     End Sub
 
+    Sub cargarPlato(cod As Int16)
+        Dim daoPlato As New DAOPlato
+        Dim toPlato As New TO_Plato
+        toPlato = daoPlato.cargarPlato(cod)
+        asignarDesdeTOPlato(toPlato)
+    End Sub
+
+    Sub asignarDesdeTOPlato(toPlato As TO_Plato)
+        Me.Codigo = toPlato.CodigoPlato
+        Me.Descripcion = toPlato.Descripcion
+        Me.Fotografia = toPlato.Fotografia
+        Me.Nombre = toPlato.Nombre
+        Me.Precio = toPlato.Precio
+        Me.Habilitado = toPlato.Habilitado
+    End Sub
+
+    Function asignarAToPlato() As TO_Plato
+        Dim toPlato As New TO_Plato()
+        toPlato.CodigoPlato = Me.Codigo
+        toPlato.Descripcion = Me.Descripcion
+        toPlato.Fotografia = Me.Fotografia
+        toPlato.Nombre = Me.Nombre
+        toPlato.Precio = Me.Precio
+        toPlato.Habilitado = Me.Habilitado
+        Return toPlato
+    End Function
 
 End Class
