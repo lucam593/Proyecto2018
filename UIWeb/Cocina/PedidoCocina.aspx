@@ -71,10 +71,10 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+<%--    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
             <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick"></asp:Timer>
         </ContentTemplate>
-    </asp:UpdatePanel>
+    </asp:UpdatePanel>--%>
 
 </asp:Content>
