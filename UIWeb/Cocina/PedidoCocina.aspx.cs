@@ -122,8 +122,8 @@ namespace UIWeb.Cocina
             listOfPedidos = cargarDdl();
             actualizarEstadosLista();
             cargarTabla();
-            Timer1.Interval = 2500;
-            Timer1.Enabled = true;
+            //Timer1.Interval = 2500;
+            //Timer1.Enabled = true;
         }
         private BL_Pedido getOrdenFromLista(short id)
         {
@@ -158,12 +158,12 @@ namespace UIWeb.Cocina
             BL_Pedido blPedido = new BL_Pedido();
             blPedido.NumeroPedido = idOrden;
             BL_Pedido temp = getOrdenFromLista(idOrden);
-            //if (temp != null)
-            //{
-            //    listOfPedidos.Remove(temp);
-            //}
-            //tablePedidosASP.Rows.Clear();
-            //cargarTabla();
+            if (temp != null)
+            {
+                listOfPedidos.Remove(temp);
+            }
+            tablePedidosASP.Rows.Clear();
+            cargarTabla();
             Session["LastStatus"] = blPedido.getEstado();
             Session["LastOrder"] = blPedido.NumeroPedido;
             blPedido.entregarPedido(idOrden);
