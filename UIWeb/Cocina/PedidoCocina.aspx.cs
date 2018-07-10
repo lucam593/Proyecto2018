@@ -119,9 +119,8 @@ namespace UIWeb.Cocina
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            morePedidos.Text = "";
             listOfPedidos = cargarDdl();
-            
+            actualizarEstadosLista();
             cargarTabla();
             Timer1.Interval = 2500;
             Timer1.Enabled = true;
@@ -170,14 +169,16 @@ namespace UIWeb.Cocina
             blPedido.entregarPedido(idOrden);
 
         }
-
-        protected void Timer1_Tick(object sender, EventArgs e)
+        private void actualizarEstadosLista()
         {
             Manejador_Pedido manejadorPedido = new Manejador_Pedido();
             manejadorPedido.listaPedidos = this.listOfPedidos;
             manejadorPedido.actualizarEstados();
 
-
+        }
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            actualizarEstadosLista();
         }
 
         protected void desentrega_Click(object sender, EventArgs e)
