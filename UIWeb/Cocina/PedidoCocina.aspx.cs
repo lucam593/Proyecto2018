@@ -105,9 +105,16 @@ namespace UIWeb.Cocina
                     string color = setColor(estado);
                     addRow(numero, nombreCliente, detalles, estado, color);
                 }
+                
+            }
+            if (listOfPedidos.Count > 10)
+            {
                 morePedidos.Text = "Faltan mas pedidos...";
             }
-
+            else
+            {
+                morePedidos.Text = "" ;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -116,7 +123,7 @@ namespace UIWeb.Cocina
             listOfPedidos = cargarDdl();
             
             cargarTabla();
-            Timer1.Interval = 10000;
+            Timer1.Interval = 2500;
             Timer1.Enabled = true;
         }
         private BL_Pedido getOrdenFromLista(short id)
@@ -148,7 +155,6 @@ namespace UIWeb.Cocina
         protected void eventoButton(object sender, EventArgs e)
         {
             Button boton = ((Button)sender);
-            boton.Enabled = false;
             short idOrden = short.Parse(boton.ID);
             BL_Pedido blPedido = new BL_Pedido();
             blPedido.NumeroPedido = idOrden;
@@ -159,7 +165,6 @@ namespace UIWeb.Cocina
             //}
             //tablePedidosASP.Rows.Clear();
             //cargarTabla();
-            
             Session["LastStatus"] = blPedido.getEstado();
             Session["LastOrder"] = blPedido.NumeroPedido;
             blPedido.entregarPedido(idOrden);
