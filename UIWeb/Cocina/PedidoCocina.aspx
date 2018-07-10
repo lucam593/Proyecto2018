@@ -41,8 +41,13 @@
         <ContentTemplate>
             <br />
             <br />
+
+ 
             <div class="col-md-offset-3 col-md-6 mydiv">
-            
+           
+
+                <asp:Button ID="Button1" runat="server" Text="Revertir Entrega" class="btn btn-danger btn-block" OnClick="desentrega_Click"/>
+                <br />
                 <asp:Table ID="tablePedidosASP" runat="server" CssClass="table table-bordered text-center">
                     <asp:TableHeaderRow ID="headerRow" CssClass='myth'>
                         <asp:TableHeaderCell Text="Numero de pedido">
@@ -58,13 +63,6 @@
 
                     </asp:TableHeaderRow>
                 </asp:Table>
-                <br />
-                <br />
-                <div class="container text-center">
-                    <div class="col-md-offset-3 col-md-6">
-                        <asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger" style="width:25%" OnClick="desentrega_Click"/>
-                    </div>
-                </div>
             </div>
             
         </ContentTemplate>
