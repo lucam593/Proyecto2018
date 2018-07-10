@@ -13,5 +13,10 @@ namespace UIWeb.AdminModule
         {
 
         }
+
+        protected void LoginAdmin_LoggedIn(object sender, EventArgs e)
+        {
+            Response.Redirect("Platos.aspx");
+        }
     }
 }
