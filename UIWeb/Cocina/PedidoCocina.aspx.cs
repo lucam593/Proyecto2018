@@ -78,20 +78,63 @@ namespace UIWeb.Cocina
             tablePedidosASP.Rows.Add(row);
         }
 
+        private void cargarTabla()
+        {
+            if (listOfPedidos.Count < 10)
+            {
+                for (int i = 0; i < listOfPedidos.Count; i++)
+                {
+                    BL_Pedido item = listOfPedidos.ElementAt<BL_Pedido>(i);
+                    string numero = item.NumeroPedido.ToString();
+                    string nombreCliente = item.Cliente.NombreDeUsuario;
+                    string estado = item.Estado.NombreEstado.Trim();
+                    List<BL.BL_DetallePedido> detalles = item.DetallePedido;
+                    string color = setColor(estado);
+                    addRow(numero, nombreCliente, detalles, estado, color);
+                }
+            }
+            else if(listOfPedidos.Count >= 10)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    BL_Pedido item = listOfPedidos.ElementAt<BL_Pedido>(i);
+                    string numero = item.NumeroPedido.ToString();
+                    string nombreCliente = item.Cliente.NombreDeUsuario;
+                    string estado = item.Estado.NombreEstado.Trim();
+                    List<BL.BL_DetallePedido> detalles = item.DetallePedido;
+                    string color = setColor(estado);
+                    addRow(numero, nombreCliente, detalles, estado, color);
+                }
+                
+            }
+            if (listOfPedidos.Count > 10)
+            {
+                morePedidos.Text = "Faltan mas pedidos...";
+            }
+            else
+            {
+                morePedidos.Text = "" ;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             listOfPedidos = cargarDdl();
+            actualizarEstadosLista();
+            cargarTabla();
+            Timer1.Interval = 2500;
+            Timer1.Enabled = true;
+        }
+        private BL_Pedido getOrdenFromLista(short id)
+        {
             foreach (var item in listOfPedidos)
             {
-                string numero = item.NumeroPedido.ToString();
-                string nombreCliente = item.Cliente.NombreDeUsuario;
-                string estado = item.Estado.NombreEstado.Trim();
-                List<BL.BL_DetallePedido> detalles = item.DetallePedido;
-                string color = setColor(estado);
-                addRow(numero, nombreCliente, detalles, estado, color);
+                if (item.NumeroPedido == id)
+                {
+                    return item;
+                }
             }
-            Timer1.Interval = 15000;
-            Timer1.Enabled = true;
+            return null;
         }
 
         protected List<BL_Pedido> cargarDdl() {
@@ -110,21 +153,32 @@ namespace UIWeb.Cocina
 
         protected void eventoButton(object sender, EventArgs e)
         {
-            short idOrden = short.Parse(((Button)sender).ID);
+            Button boton = ((Button)sender);
+            short idOrden = short.Parse(boton.ID);
             BL_Pedido blPedido = new BL_Pedido();
             blPedido.NumeroPedido = idOrden;
+            BL_Pedido temp = getOrdenFromLista(idOrden);
+            //if (temp != null)
+            //{
+            //    listOfPedidos.Remove(temp);
+            //}
+            //tablePedidosASP.Rows.Clear();
+            //cargarTabla();
             Session["LastStatus"] = blPedido.getEstado();
             Session["LastOrder"] = blPedido.NumeroPedido;
             blPedido.entregarPedido(idOrden);
 
         }
-
-        protected void Timer1_Tick(object sender, EventArgs e)
+        private void actualizarEstadosLista()
         {
             Manejador_Pedido manejadorPedido = new Manejador_Pedido();
             manejadorPedido.listaPedidos = this.listOfPedidos;
             manejadorPedido.actualizarEstados();
 
+        }
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            actualizarEstadosLista();
         }
 
         protected void desentrega_Click(object sender, EventArgs e)

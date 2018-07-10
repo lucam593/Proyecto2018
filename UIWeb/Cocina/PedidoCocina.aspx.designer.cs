@@ -31,13 +31,13 @@ namespace UIWeb.Cocina {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Button1 control.
+        /// desentrega control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button desentrega;
         
         /// <summary>
         /// tablePedidosASP control.
@@ -56,6 +56,15 @@ namespace UIWeb.Cocina {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableHeaderRow headerRow;
+        
+        /// <summary>
+        /// morePedidos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label morePedidos;
         
         /// <summary>
         /// UpdatePanel2 control.

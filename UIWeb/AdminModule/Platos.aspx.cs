@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
 
-namespace UIWeb
+namespace UIWeb.AdminModule
 {
     public partial class Platos : System.Web.UI.Page
     {
