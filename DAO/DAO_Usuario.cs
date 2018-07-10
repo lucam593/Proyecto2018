@@ -6,7 +6,7 @@ using TO;
 
 namespace DAO
 {
-    class DAO_Usuario
+    public class DAO_Usuario
     {
         public void insertarUsuario(string userName, string password, string rol, ProyectoEntidades entidades)
         {
@@ -31,10 +31,23 @@ namespace DAO
 
         }
 
+        public TO_Usuarios cargarUsuario(string userName)
+        {
+            ProyectoEntidades entidades = new ProyectoEntidades();
+            var user = (from usr in entidades.Usuarios where usr.NombreUsuario == userName select usr).Single();
+
+            TO_Usuarios toUser = new TO_Usuarios();
+            toUser.NombreDeUsuario = user.NombreUsuario;
+            toUser.Contrasena = user.Contrasena;
+            toUser.Rol = user.Rol;
+
+            return toUser;
+        }
+
         public void modificarUsuario(string userName, string nuevoUserName, string nuevoPassword, ProyectoEntidades entidades)
         {
             Usuario user = (from usr in entidades.Usuarios where usr.NombreUsuario == userName select usr).Single();
-            user.NombreUsuario = userName;
+            user.NombreUsuario = nuevoUserName;
             user.Contrasena = nuevoPassword;
         }
     }

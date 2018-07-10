@@ -6,10 +6,14 @@ Public Class BL_DetallePedido
     Property Plato As BL_Plato
     Property Cantidad As Int16
 
+    Public Sub New()
+        Me.Plato = New BL_Plato()
+    End Sub
+
     Public Sub AsignarDesdeTODetallePedido(toDetallePedido As TO_DetallePedido)
         Me.NumeroPedido = toDetallePedido.NumeroPedido
         Dim plato As New BL_Plato()
-        'plato.AsignarDesdeToPlato(toDetallePedido.Plato)
+        plato.asignarDesdeTOPlato(toDetallePedido.Plato)
         Me.Plato = plato
         Me.Cantidad = toDetallePedido.Cantidad
     End Sub
@@ -17,10 +21,13 @@ Public Class BL_DetallePedido
     Public Function Crear_To_DetallePedido() As TO_DetallePedido
         Dim toDetallePedido As New TO_DetallePedido()
         toDetallePedido.NumeroPedido = Me.NumeroPedido
+
         Dim toPlato As New TO_Plato()
-        'toPlato = Me.Plato.AsignarAToPlato()
+        toPlato = Me.Plato.AsignarAToPlato()
         toDetallePedido.Plato = toPlato
+
         toDetallePedido.Cantidad = Me.Cantidad
+
         Return toDetallePedido
     End Function
 

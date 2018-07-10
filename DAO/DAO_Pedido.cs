@@ -10,11 +10,11 @@ namespace DAO
     {
         ProyectoEntidades entidades = new ProyectoEntidades();
 
-        public void generarPedido(TO_Pedido toPedido)
+        public void insertarPedido(TO_Pedido toPedido)
         {
             Pedido pedido = new Pedido();
             pedido.Cliente = toPedido.Cliente.NombreDeUsuario;
-            pedido.Estado = "A_Tiempo";
+            pedido.Estado = "A Tiempo";
             pedido.Fecha = System.DateTime.Now;
 
             entidades.Pedidoes.Add(pedido);
@@ -49,6 +49,25 @@ namespace DAO
                     toPedido.NumeroPedido = Convert.ToInt16(pedido.NumeroPedido);
                     toPedido.Estado.NombreEstado = pedido.Estado;
                     toPedido.Fecha = pedido.Fecha;
+                    listaPedidos.listaPedidos.Add(toPedido);
+                }
+            }
+        }
+
+        public void cargarPedidosCocina(TO_ListaPedidos listaPedidos)
+        {
+            listaPedidos.listaPedidos = new List<TO_Pedido>();
+            var pedidos = from aux in entidades.Pedidoes where aux.Estado != "Anulado" && aux.Estado != "Entregado" select aux;
+            if (pedidos.Count() > 0)
+            {
+                foreach (Pedido pedido in pedidos)
+                {
+                    TO_Pedido toPedido = new TO_Pedido();
+                    toPedido.Cliente.NombreDeUsuario = pedido.Cliente;
+                    toPedido.NumeroPedido = Convert.ToInt16(pedido.NumeroPedido);
+                    toPedido.Estado.NombreEstado = pedido.Estado;
+                    toPedido.Fecha = pedido.Fecha;
+                    listaPedidos.listaPedidos.Add(toPedido);
                 }
             }
         }
@@ -65,11 +84,43 @@ namespace DAO
                     toDetallePedido.NumeroPedido = Convert.ToInt16(detallePedido.NumeroPedido);
                     TO_Plato toPlato = new TO_Plato();
                     toPlato.CodigoPlato = Convert.ToInt16(detallePedido.Codigo_Plato);
+                    DAOPlato daoPlato = new DAOPlato();
+                    toPlato = daoPlato.cargarPlato(toPlato.CodigoPlato);
                     toDetallePedido.Plato = toPlato;
                     toDetallePedido.Cantidad = Convert.ToInt16(detallePedido.Cantidad);
                     toPedido.DetallePedido.Add(toDetallePedido);
                 }
             }
+
+            var estado = from aux in entidades.Estadoes where aux.NombreEstado == toPedido.Estado.NombreEstado.Trim() select aux;
+            toPedido.Estado.LimiteMinutos = short.Parse(estado.First().LimiteMinutos.ToString());
+            toPedido.Estado.Indice = short.Parse(estado.First().Indice.ToString());
+        }
+
+        public void cambiarSiguienteEstado(TO_Pedido toPedido) {
+            var pedido = from auxPedido in entidades.Pedidoes where auxPedido.NumeroPedido == toPedido.NumeroPedido select auxPedido;
+            var siguienteEstado = from auxEstado in entidades.Estadoes where auxEstado.Indice == (toPedido.Estado.Indice + 1) select auxEstado;
+            pedido.First().Estado = siguienteEstado.First().NombreEstado;
+
+            toPedido.Estado.NombreEstado = siguienteEstado.First().NombreEstado;
+            toPedido.Estado.LimiteMinutos = Convert.ToInt16(siguienteEstado.First().LimiteMinutos);
+            toPedido.Estado.Indice = Convert.ToInt16(siguienteEstado.First().Indice);
+
+            entidades.SaveChanges();
+        }
+
+        public String getEstado(int numeroPedido) {
+            var pedido = from auxPedido in entidades.Pedidoes where auxPedido.NumeroPedido == numeroPedido select auxPedido;
+            return pedido.First().Estado;
+        }
+
+        public void alterarEstadoPedido(Int16 numPedido, string estadoAnterior)
+        {
+            var pedido = (from aux in entidades.Pedidoes where aux.NumeroPedido == numPedido select aux).Single();
+
+            pedido.Estado = estadoAnterior;
+
+            entidades.SaveChanges();
         }
     }
 }
