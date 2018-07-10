@@ -5,13 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace UIWeb
+namespace UIWeb.AdminModule
 {
-    public partial class Administrador : System.Web.UI.MasterPage
+    public partial class AdminLogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void LoginAdmin_LoggedIn(object sender, EventArgs e)
+        {
+            Response.Redirect("Platos.aspx");
         }
     }
 }

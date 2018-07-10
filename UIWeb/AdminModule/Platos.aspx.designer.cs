@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UIWeb {
+namespace UIWeb.AdminModule {
     
     
     public partial class Platos {
