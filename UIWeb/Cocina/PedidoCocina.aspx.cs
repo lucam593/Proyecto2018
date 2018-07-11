@@ -134,7 +134,6 @@ namespace UIWeb.Cocina
                     string color = setColor(estado);
                     addRow(numero, nombreCliente, detalles, estado, color);
                 }
-                
             }
             if (listOfPedidos.Count > 10)
             {
