@@ -73,6 +73,8 @@
   <ItemGroup>
     <Content Include="Cocina\Cocina.aspx" />
     <Content Include="Cocina\PedidoCocina.aspx" />
+    <Content Include="Images\BackgroundTabla.jpg" />
+    <Content Include="Images\logoRestaurante.jpg" />
     <Content Include="LoginAdmin.aspx" />
     <Content Include="Platos.aspx" />
     <Content Include="REST\WSPlatos.svc" />
