@@ -24,6 +24,15 @@
         .trred {
             background-color: #ffad99;
         }
+        .lbldiv{
+            background-color: black;
+            text-align:center;
+        }
+        .label {
+            font-size: 30px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -37,12 +46,16 @@
             <br />
             <br />
             <div class="col-md-offset-3 col-md-6 mydiv">
-            <asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger btn-block" OnClick="desentrega_Click"/>
+                <br />
+                <asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger btn-block" OnClick="desentrega_Click"/>
+                <br />
                 <asp:Table ID="tablePedidosASP" runat="server" CssClass="table table-bordered text-center">
 
                 </asp:Table>
                 <br />
-                <asp:Label ID="morePedidos" runat="server"></asp:Label>
+                <div class="lbldiv">
+                    <asp:Label ID="morePedidos" runat="server" CssClass="label"></asp:Label>
+                </div>
                 <br />
                 <div class="container text-center">
                     <div class="col-md-offset-3 col-md-6">

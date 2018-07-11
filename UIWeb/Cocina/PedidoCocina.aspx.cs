@@ -138,7 +138,7 @@ namespace UIWeb.Cocina
             }
             if (listOfPedidos.Count > 10)
             {
-                morePedidos.Text = "Faltan mas pedidos...";
+                morePedidos.Text = "↧ Existen más pedidos ↧";
             }
             else
             {

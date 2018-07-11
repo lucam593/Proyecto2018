@@ -14,11 +14,18 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .body {
-            background-image: url("/Images/Wood-Background.jpg")
+            background-image: url("/Imagenes/BackgroundTabla.jpg");
+        }
+        .div {
+            background-color: white;
+            text-align: center;
         }
     </style>
 </head>
 <body class="body">
+    <div class="col-md-offset-3 col-md-6 div">
+        <asp:Image ID="Image1" runat="server" Height="200" Width="300" ImageUrl="/Imagenes/logoRestaurante.jpg"/>
+     </div>
     <form id="form1" runat="server">
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
