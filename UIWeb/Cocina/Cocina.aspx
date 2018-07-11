@@ -31,9 +31,9 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:Button ID="btnLog" runat="server" Text="btnLog" />
+                    <asp:Button ID="btnLog" runat="server" Text="btnLog" OnClick="btnLog_Click"/>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnRegister" runat="server" Text="btnRegister" />
+                    <asp:Button ID="btnRegister" runat="server" Text="btnRegister" OnClick="btnRegister_Click"/>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
