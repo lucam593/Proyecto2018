@@ -1,5 +1,5 @@
 ﻿Public Class TO_Cliente
-    Inherits TO_Usuario
+    Inherits TO_Usuarios
     Property Direccion As String
     Property NombreCompleto As String
     Property Correo As String
