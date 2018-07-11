@@ -71,8 +71,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\adminClientes.aspx" />
+    <Content Include="Admin\adminEstados.aspx" />
     <Content Include="Admin\adminInicio.aspx" />
+    <Content Include="Admin\adminPedidos.aspx" />
     <Content Include="Admin\adminPlatos.aspx" />
+    <Content Include="Admin\adminUsuarios.aspx" />
     <Content Include="Admin\IniSesion.aspx" />
     <Content Include="Cocina\Cocina.aspx" />
     <Content Include="Cocina\PedidoCocina.aspx" />
@@ -84,6 +88,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\adminClientes.aspx.cs">
+      <DependentUpon>adminClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminClientes.aspx.designer.cs">
+      <DependentUpon>adminClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\adminEstados.aspx.cs">
+      <DependentUpon>adminEstados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminEstados.aspx.designer.cs">
+      <DependentUpon>adminEstados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\adminInicio.aspx.cs">
       <DependentUpon>adminInicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,12 +116,26 @@
     <Compile Include="Admin\AdminMenu.Master.designer.cs">
       <DependentUpon>AdminMenu.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\adminPedidos.aspx.cs">
+      <DependentUpon>adminPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminPedidos.aspx.designer.cs">
+      <DependentUpon>adminPedidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\adminPlatos.aspx.cs">
       <DependentUpon>adminPlatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\adminPlatos.aspx.designer.cs">
       <DependentUpon>adminPlatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\adminUsuarios.aspx.cs">
+      <DependentUpon>adminUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminUsuarios.aspx.designer.cs">
+      <DependentUpon>adminUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\IniSesion.aspx.cs">
       <DependentUpon>IniSesion.aspx</DependentUpon>

@@ -2,25 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-   
-    <%-- <span class="clearfix"></span>
-    
-    <div class="container" style="margin-top:5%">
-         <div class="row vertical-offset-100">
-    	<div class="col-md-4 col-md-offset-4">
-    	
-    <div class="form-group"  style="background-color:#EACD8B">
-     <asp:Login ID="logAdmin" runat="server" DisplayRememberMe="False" LoginButtonText="Entrar" PasswordLabelText="Contraseña: " TitleText="Iniciar Sesión" UserNameLabelText="Usuario:     " BorderStyle="Double" CssClass="center-block" FailureText="El inicio de sesión no fue exitoso, intente de nuevo." Width="328px" PasswordRequiredErrorMessage="La contraseña es requerida." UserNameRequiredErrorMessage="El nombre de usuario es requerido.">
-         <LabelStyle Font-Bold="True" />
-         <LoginButtonStyle  CssClass="btn btn-success" />
-         <TextBoxStyle CssClass="form-control" />
-         <TitleTextStyle Font-Bold="True" Font-Size="Larger"  />
-    </asp:Login>
-       </div>
-          </div>
-                </div> 
-                   </div>  --%>
     <div class="container" >
     <div class="row vertical-offset-100" >
     	<div class="col-md-4 col-md-offset-4" style="margin-top:6%">
