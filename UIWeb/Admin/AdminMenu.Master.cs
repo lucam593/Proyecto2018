@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace UIWeb.Admin
 {
-    public partial class IniSesion : System.Web.UI.Page
+    public partial class AdminMenu : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-        }
-
-        protected void btnEntrar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("adminInicio.aspx");
+            usuarioID.InnerText = "UsuarioActivo";
         }
     }
 }
