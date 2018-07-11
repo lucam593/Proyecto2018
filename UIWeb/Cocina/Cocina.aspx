@@ -2,18 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Label ID="errorLabel" runat="server" Text=" "></asp:Label>
-    <br />
-    Usuario:
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-    <br />
-    <br />
-    Contraseña:
-    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-    <br />
-    <br />
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-    <br />
-    
-    <br />
+
+    <div class="col-md-offset-3 col-md-6 p-3 mb-2 bg-info text-white">
+            <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate"></asp:Login>
+    </div>
+
+
+
 </asp:Content>

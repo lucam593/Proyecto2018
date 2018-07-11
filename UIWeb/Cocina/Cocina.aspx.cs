@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
@@ -15,22 +16,24 @@ namespace UIWeb.Cocina
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
             try
             {
                 BL_Usuario blUser = new BL_Usuario();
-                blUser.NombreDeUsuario = TextBox1.Text.Trim();
-                blUser.Contrasena = TextBox2.Text.Trim();
+                blUser.NombreDeUsuario = Login1.UserName;
+                blUser.Contrasena = Login1.Password;
                 blUser.Rol = "Cocina";
                 blUser.seleccionarUsuario();
-                Response.Redirect("PedidoCocina.aspx");
+
+                FormsAuthentication.RedirectFromLoginPage(blUser.NombreDeUsuario, false);
+                
+
             }
             catch (Exception ex)
             {
-                errorLabel.Text = ex.ToString();
+                Login1.FailureText = ex.ToString();
             }
-
 
 
         }
