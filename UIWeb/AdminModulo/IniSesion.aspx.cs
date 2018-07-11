@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace UIWeb
+namespace UIWeb.AdminModulo
 {
-    public partial class AdminMenu : System.Web.UI.MasterPage
+    public partial class IniSesion : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
