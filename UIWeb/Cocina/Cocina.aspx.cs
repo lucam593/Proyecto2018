@@ -15,27 +15,21 @@ namespace UIWeb.Cocina
         {
 
         }
+        //    try
+        //    {
+        //        BL_Usuario blUser = new BL_Usuario();
+        //blUser.NombreDeUsuario = Login1.UserName;
+        //        blUser.Contrasena = Login1.Password;
+        //        blUser.Rol = "Cocina";
+        //        blUser.seleccionarUsuario();
 
-        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
-        {
-            try
-            {
-                BL_Usuario blUser = new BL_Usuario();
-                blUser.NombreDeUsuario = Login1.UserName;
-                blUser.Contrasena = Login1.Password;
-                blUser.Rol = "Cocina";
-                blUser.seleccionarUsuario();
-
-                FormsAuthentication.RedirectFromLoginPage(blUser.NombreDeUsuario, false);
+        //        FormsAuthentication.RedirectFromLoginPage(blUser.NombreDeUsuario, false);
                 
 
-            }
-            catch (Exception ex)
-            {
-                Login1.FailureText = ex.ToString();
-            }
-
-
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Login1.FailureText = ex.ToString();
+        //    }
     }
 }
