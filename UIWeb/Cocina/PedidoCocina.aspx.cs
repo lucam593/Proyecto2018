@@ -155,7 +155,7 @@ namespace UIWeb.Cocina
             listOfPedidos = cargarDdl();
             actualizarEstadosLista();
             cargarTabla();
-            Timer1.Interval = 300000;
+            Timer1.Interval = 60000;
             Timer1.Enabled = true;
         }
         private BL_Pedido getOrdenFromLista(short id)

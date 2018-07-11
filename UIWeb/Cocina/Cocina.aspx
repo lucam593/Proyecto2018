@@ -3,16 +3,31 @@
 <style type="text/css">
     .div{
         text-align:center;
-        background-color: white; 
+        background-color: white;
+    }
+    .lbldiv{
+        background-color: black;
+        text-align:center;
+    }
+    .label {
+        font-size: 30px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;
     }
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <div class="col-md-offset-3 col-md-6 p-3 mb-2 bg-info div">
         <br />
         <br />
-        <asp:Label ID="Label3" runat="server" Text="Login"></asp:Label>
+    <div class="col-md-offset-3 col-md-6 div h-100">
+        <br />
+        <br />
+        <div class="lbldiv">
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Login" CssClass="label"></asp:Label>
+            <br />
+            <br />
+        </div>
         <br />
         <asp:Table ID="Table1" runat="server"  CssClass="table table-bordered text-center" BorderStyle="Solid" BorderColor="Transparent">
             <asp:TableRow BorderStyle="Solid" BorderColor="Transparent">
@@ -41,7 +56,7 @@
         <br />
         <asp:Label ID="labelError" runat="server" Text=""></asp:Label>
         <br />
-        
+        <br />
     </div>
 
 
