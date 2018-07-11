@@ -16,7 +16,7 @@ namespace DAO
         public List<TO_Plato> cargarPlatos()
         {
             var ent = new ProyectoEntidades();
-            var consulta = from c in ent.Platoes select c;
+            var consulta = from c in ent.Platoes where c.Habilitado == true select c;
             var list = consulta.ToList();
 
             List<TO_Plato> toplatos = new List<TO_Plato>();

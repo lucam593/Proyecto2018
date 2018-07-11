@@ -5,7 +5,7 @@ Public Class BL_Usuario
     Property Contrasena As String
     Property Rol As String
 
-    Sub seleccionarUsuario()
+    Sub seleccionarUsuarioCocina()
         Dim daoUser As New DAO_Usuario
         Dim toUser As TO_Usuarios = daoUser.cargarUsuario(NombreDeUsuario)
         If Contrasena <> toUser.Contrasena.Trim() Then
@@ -17,5 +17,11 @@ Public Class BL_Usuario
         Me.Contrasena = Nothing
         Me.NombreDeUsuario = Nothing
         Me.Rol = Nothing
+    End Sub
+
+    Sub registrarUsuarioCocina()
+        Dim daoUser As New DAO_Usuario
+        Dim toUser As New TO_Usuarios
+        daoUser.insertarUsuario(Me.NombreDeUsuario, Me.Contrasena, Me.Rol)
     End Sub
 End Class

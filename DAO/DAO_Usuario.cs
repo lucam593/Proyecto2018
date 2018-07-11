@@ -11,11 +11,26 @@ namespace DAO
         public void insertarUsuario(string userName, string password, string rol, ProyectoEntidades entidades)
         {
             Usuario user = new Usuario();
-            user.NombreUsuario = userName;
 
+            user.NombreUsuario = userName;
             user.Rol = rol;
             user.Contrasena = password;
+
             entidades.Usuarios.Add(user);
+        }
+
+        public void insertarUsuario(string userName, string password, string rol)
+        {
+
+            ProyectoEntidades entidades = new ProyectoEntidades();
+            Usuario user = new Usuario();
+
+            user.NombreUsuario = userName;
+            user.Rol = rol;
+            user.Contrasena = password;
+
+            entidades.Usuarios.Add(user);
+            entidades.SaveChanges();
         }
 
         public TO_Usuarios cargarUsuario(string userName, ProyectoEntidades entidades)
@@ -37,9 +52,9 @@ namespace DAO
             var user = (from usr in entidades.Usuarios where usr.NombreUsuario == userName select usr).Single();
 
             TO_Usuarios toUser = new TO_Usuarios();
-            toUser.NombreDeUsuario = user.NombreUsuario;
-            toUser.Contrasena = user.Contrasena;
-            toUser.Rol = user.Rol;
+            toUser.NombreDeUsuario = user.NombreUsuario.Trim();
+            toUser.Contrasena = user.Contrasena.Trim();
+            toUser.Rol = user.Rol.Trim();
 
             return toUser;
         }

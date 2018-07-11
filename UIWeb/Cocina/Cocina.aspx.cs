@@ -12,27 +12,42 @@ namespace UIWeb.Cocina
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["ErrorLogin"]!=null)
+            {
+                labelError.Text = Session["ErrorLogin"].ToString();
+            }
+            
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnLog_Click(object sender, EventArgs e)
         {
             try
             {
                 BL_Usuario blUser = new BL_Usuario();
-                blUser.NombreDeUsuario = TextBox1.Text.Trim();
-                blUser.Contrasena = TextBox2.Text.Trim();
+                blUser.NombreDeUsuario = txtUser.Text;
+                blUser.Contrasena = txtPassword.Text;
                 blUser.Rol = "Cocina";
-                blUser.seleccionarUsuario();
+                blUser.seleccionarUsuarioCocina();
+
+                Session["UName"] = txtUser.Text;
+
                 Response.Redirect("PedidoCocina.aspx");
+
+
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                errorLabel.Text = ex.ToString();
+                labelError.Text = "Error de autenticacion";
             }
+        }
 
-
-
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            BL_Usuario blUsuario = new BL_Usuario();
+            blUsuario.NombreDeUsuario = txtUser.Text;
+            blUsuario.Contrasena = txtPassword.Text;
+            blUsuario.Rol = "Cocina";
+            blUsuario.registrarUsuarioCocina();
         }
     }
 }

@@ -134,7 +134,6 @@ namespace UIWeb.Cocina
                     string color = setColor(estado);
                     addRow(numero, nombreCliente, detalles, estado, color);
                 }
-                
             }
             if (listOfPedidos.Count > 10)
             {
@@ -148,10 +147,15 @@ namespace UIWeb.Cocina
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UName"] == null)
+            {
+                Session["ErrorLogin"] = "Usuario no valido";
+                Response.Redirect("Cocina.aspx");
+            }
             listOfPedidos = cargarDdl();
             actualizarEstadosLista();
             cargarTabla();
-            Timer1.Interval = 300000;
+            Timer1.Interval = 60000;
             Timer1.Enabled = true;
         }
         private BL_Pedido getOrdenFromLista(short id)
