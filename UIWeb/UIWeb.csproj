@@ -76,20 +76,12 @@
     <Content Include="Cocina\PedidoCocina.aspx" />
     <Content Include="Images\BackgroundTabla.jpg" />
     <Content Include="Images\logoRestaurante.jpg" />
-    <Content Include="Platos.aspx" />
     <Content Include="REST\WSPlatos.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrador.Master.cs">
-      <DependentUpon>Administrador.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administrador.Master.designer.cs">
-      <DependentUpon>Administrador.Master</DependentUpon>
-    </Compile>
     <Compile Include="Admin\IniSesion.aspx.cs">
       <DependentUpon>IniSesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -111,13 +103,6 @@
     <Compile Include="Cocina\PedidoCocina.aspx.designer.cs">
       <DependentUpon>PedidoCocina.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Platos.aspx.cs">
-      <DependentUpon>Platos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Platos.aspx.designer.cs">
-      <DependentUpon>Platos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,7 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Principal.Master" />
-    <Content Include="Administrador.Master" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
