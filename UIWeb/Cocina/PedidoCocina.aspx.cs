@@ -148,6 +148,11 @@ namespace UIWeb.Cocina
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UName"] == null)
+            {
+                Session["ErrorLogin"] = "Usuario no valido";
+                Response.Redirect("Cocina.aspx");
+            }
             listOfPedidos = cargarDdl();
             actualizarEstadosLista();
             cargarTabla();
