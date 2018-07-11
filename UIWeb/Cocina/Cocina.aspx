@@ -14,34 +14,34 @@
         <br />
         <asp:Label ID="Label3" runat="server" Text="Login"></asp:Label>
         <br />
-        <asp:Table ID="Table1" runat="server"  CssClass="table table-bordered text-center">
-            <asp:TableRow>
+        <asp:Table ID="Table1" runat="server"  CssClass="table table-bordered text-center" BorderStyle="Solid" BorderColor="Transparent">
+            <asp:TableRow BorderStyle="Solid" BorderColor="Transparent">
                 <asp:TableCell>
-                    <asp:Label ID="Label1" runat="server" Text="Username: "></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="Username: "></asp:Label> 
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtUser"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow>
+            <asp:TableRow BorderStyle="Solid" BorderColor="Transparent">
                 <asp:TableCell>
                     <asp:Label ID="Label2" runat="server" Text="Password: "></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow>
+            <asp:TableRow BorderStyle="Solid" BorderColor="Transparent">
                 <asp:TableCell>
-                    <asp:Button ID="btnLog" runat="server" Text="btnLog" OnClick="btnLog_Click"/>
+                    <asp:Button ID="btnLog" runat="server" Text="Log In" OnClick="btnLog_Click" CssClass="btn btn-primary"/>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnRegister" runat="server" Text="btnRegister" OnClick="btnRegister_Click"/>
+                    <asp:Button ID="btnRegister" runat="server" Text="Sign In" OnClick="btnRegister_Click" CssClass="btn btn-success"/>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe ingresar un Username" ControlToValidate="txtUser"></asp:RequiredFieldValidator>
+
         <br />
-        <asp:Label ID="labelError" runat="server" Text="Error"></asp:Label>
+        <asp:Label ID="labelError" runat="server" Text=""></asp:Label>
         <br />
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Debe ingresar una contraseña" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
+        
     </div>
 
 
