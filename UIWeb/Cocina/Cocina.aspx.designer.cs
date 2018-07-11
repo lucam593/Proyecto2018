@@ -22,13 +22,13 @@ namespace UIWeb.Cocina {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// labelError control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelError;
+        protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
         /// Label1 control.
@@ -101,5 +101,14 @@ namespace UIWeb.Cocina {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegister;
+        
+        /// <summary>
+        /// labelError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelError;
     }
 }
