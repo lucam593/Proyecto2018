@@ -43,6 +43,34 @@ namespace UIWeb.Cocina
             boton.Click += new System.EventHandler(eventoButton);
         }
 
+        private void createHeaderRow()
+        {
+            TableHeaderRow headerRow = new TableHeaderRow();
+            headerRow.Style.Add("background-color", "black");
+            headerRow.Style.Add("color", "white");
+            headerRow.Style.Add("padding", "15px");
+
+            TableHeaderCell numeroPedido = new TableHeaderCell();
+            numeroPedido.Text = "Numero de Pedido";
+            headerRow.Cells.Add(numeroPedido);
+
+            TableHeaderCell nombreCliente = new TableHeaderCell();
+            nombreCliente.Text = "Nombre de cliente";
+            headerRow.Cells.Add(nombreCliente);
+
+            TableHeaderCell detallePedido = new TableHeaderCell();
+            detallePedido.Text = "Detalle de pedido";
+            headerRow.Cells.Add(detallePedido);
+
+            TableHeaderCell estado = new TableHeaderCell();
+            estado.Text = "Estado";
+            headerRow.Cells.Add(estado);
+
+            TableHeaderCell boton = new TableHeaderCell();
+            headerRow.Cells.Add(boton);
+
+            tablePedidosASP.Rows.Add(headerRow);
+        }
         private void addRow(string numero, string nombreCliente, List<BL.BL_DetallePedido> detalles, string estado, string color)
         {
 
@@ -80,6 +108,7 @@ namespace UIWeb.Cocina
 
         private void cargarTabla()
         {
+            createHeaderRow();
             if (listOfPedidos.Count < 10)
             {
                 for (int i = 0; i < listOfPedidos.Count; i++)
@@ -122,7 +151,7 @@ namespace UIWeb.Cocina
             listOfPedidos = cargarDdl();
             actualizarEstadosLista();
             cargarTabla();
-            Timer1.Interval = 2500;
+            Timer1.Interval = 300000;
             Timer1.Enabled = true;
         }
         private BL_Pedido getOrdenFromLista(short id)
@@ -158,12 +187,12 @@ namespace UIWeb.Cocina
             BL_Pedido blPedido = new BL_Pedido();
             blPedido.NumeroPedido = idOrden;
             BL_Pedido temp = getOrdenFromLista(idOrden);
-            //if (temp != null)
-            //{
-            //    listOfPedidos.Remove(temp);
-            //}
-            //tablePedidosASP.Rows.Clear();
-            //cargarTabla();
+            if (temp != null)
+            {
+                listOfPedidos.Remove(temp);
+            }
+            tablePedidosASP.Rows.Clear();
+            cargarTabla();
             Session["LastStatus"] = blPedido.getEstado();
             Session["LastOrder"] = blPedido.NumeroPedido;
             blPedido.entregarPedido(idOrden);

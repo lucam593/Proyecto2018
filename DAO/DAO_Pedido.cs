@@ -97,9 +97,9 @@ namespace DAO
             toPedido.Estado.Indice = short.Parse(estado.First().Indice.ToString());
         }
 
-        public void cambiarSiguienteEstado(TO_Pedido toPedido) {
+        public void cambiarSiguienteEstado(TO_Pedido toPedido, string statusName) {
             var pedido = from auxPedido in entidades.Pedidoes where auxPedido.NumeroPedido == toPedido.NumeroPedido select auxPedido;
-            var siguienteEstado = from auxEstado in entidades.Estadoes where auxEstado.Indice == (toPedido.Estado.Indice + 1) select auxEstado;
+            var siguienteEstado = from auxEstado in entidades.Estadoes where auxEstado.NombreEstado == statusName select auxEstado;
             pedido.First().Estado = siguienteEstado.First().NombreEstado;
 
             toPedido.Estado.NombreEstado = siguienteEstado.First().NombreEstado;
@@ -112,6 +112,21 @@ namespace DAO
         public String getEstado(int numeroPedido) {
             var pedido = from auxPedido in entidades.Pedidoes where auxPedido.NumeroPedido == numeroPedido select auxPedido;
             return pedido.First().Estado;
+        }
+
+        public List<TO_Estado> getEstados()
+        {
+            List<TO_Estado> lista = new List<TO_Estado>();
+            var estados = from est in entidades.Estadoes select est;
+            foreach (Estado item in estados)
+            {
+                TO_Estado toEstado = new TO_Estado();
+                toEstado.NombreEstado = item.NombreEstado;
+                toEstado.Indice = short.Parse(item.Indice.ToString());
+                toEstado.LimiteMinutos = short.Parse(item.LimiteMinutos.ToString());
+                lista.Add(toEstado);
+            }
+            return lista;
         }
 
         public void alterarEstadoPedido(Int16 numPedido, string estadoAnterior)

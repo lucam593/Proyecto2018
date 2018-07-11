@@ -49,15 +49,6 @@ namespace UIWeb.Cocina {
         protected global::System.Web.UI.WebControls.Table tablePedidosASP;
         
         /// <summary>
-        /// headerRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderRow headerRow;
-        
-        /// <summary>
         /// morePedidos control.
         /// </summary>
         /// <remarks>

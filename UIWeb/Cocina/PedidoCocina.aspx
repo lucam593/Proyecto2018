@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="PedidoCocina.aspx.cs" Inherits="UIWeb.Cocina.PedidoCocina" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .myth {
-            background-color: black;
-            color: white;
-            padding: 15px;
-        }
         .mydiv {
             background-color: white;
             padding: 10px;
@@ -44,19 +39,7 @@
             <div class="col-md-offset-3 col-md-6 mydiv">
             <asp:Button ID="desentrega" runat="server" Text="Revertir Entrega" class="btn btn-danger btn-block" OnClick="desentrega_Click"/>
                 <asp:Table ID="tablePedidosASP" runat="server" CssClass="table table-bordered text-center">
-                    <asp:TableHeaderRow ID="headerRow" CssClass='myth'>
-                        <asp:TableHeaderCell Text="Numero de pedido">
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell Text="Nombre de Cliente">
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell Text="Lista de pedidos " >
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell Text="Estado">
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell>
-                        </asp:TableHeaderCell>
 
-                    </asp:TableHeaderRow>
                 </asp:Table>
                 <br />
                 <asp:Label ID="morePedidos" runat="server"></asp:Label>

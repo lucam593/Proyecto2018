@@ -64,14 +64,22 @@ Public Class BL_Pedido
         If Me.Estado.NombreEstado.Trim() <> "Demorado" And
            Me.Estado.NombreEstado.Trim() <> "Entregado" And
            Me.Estado.NombreEstado.Trim() <> "Anulado" Then
-            If DateTime.Now >= Me.Fecha.AddMinutes(Me.Estado.LimiteMinutos) Then
+
+            Dim daoPedido As New DAO_Pedido()
+            Dim listEstados As New List(Of TO_Estado)
+            listEstados = daoPedido.getEstados()
+
+            If DateTime.Now >= Me.Fecha.AddMinutes(listEstados.ElementAt(0).LimiteMinutos) Then
 
                 Dim toPedido As New TO_Pedido
                 toPedido = Me.Crear_TO_Pedido()
-
-                Dim daoPedido As New DAO_Pedido()
-                daoPedido.cambiarSiguienteEstado(toPedido)
-
+                daoPedido.cambiarSiguienteEstado(toPedido, "Sobre Tiempo")
+                Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
+            End If
+            If DateTime.Now >= Me.Fecha.AddMinutes(listEstados.ElementAt(4).LimiteMinutos) Then
+                Dim toPedido As New TO_Pedido
+                toPedido = Me.Crear_TO_Pedido()
+                daoPedido.cambiarSiguienteEstado(toPedido, "Demorado")
                 Me.Estado.AsignarDesdeTOEstado(toPedido.Estado)
             End If
         End If
