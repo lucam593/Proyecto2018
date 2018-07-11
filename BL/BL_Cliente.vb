@@ -8,9 +8,37 @@ Public Class BL_Cliente
     Property Correo As String
     Property Habilitado As Boolean
 
+    Public Sub insertarCliente()
+        Dim daoCliente As New DAOCliente()
+        Dim toCliente As New TO_Cliente()
+        toCliente = Crear_To_Cliente()
+        daoCliente.insertarCliente(toCliente)
+    End Sub
+
+    Public Sub cargarCliente(username As String, password As String)
+        Me.NombreDeUsuario = NombreDeUsuario
+        Me.Contrasena = password
+        Dim daoCliente As New DAOCliente()
+        Dim toCliente As New TO_Cliente()
+        toCliente.NombreDeUsuario = Me.NombreDeUsuario
+        toCliente.Contrasena = Me.Contrasena
+        daoCliente.cargarCliente(toCliente)
+        AsignarDesdeTOCliente(toCliente)
+    End Sub
+
+    Public Sub modificarDireccionCliente(newDireccion As String)
+        Me.Direccion = newDireccion
+        Dim daoCliente As New DAOCliente()
+        Dim toCliente As New TO_Cliente()
+        toCliente.NombreDeUsuario = Me.NombreDeUsuario
+        daoCliente.modificarDireccionCliente(toCliente)
+        AsignarDesdeTOCliente(toCliente)
+    End Sub
+
     Public Sub AsignarDesdeTOCliente(toCliente As TO_Cliente)
         Me.NombreDeUsuario = toCliente.NombreDeUsuario
         Me.NombreCompleto = toCliente.NombreCompleto
+        Me.Contrasena = toCliente.Contrasena
         Me.Correo = toCliente.Correo
         Me.Habilitado = toCliente.Habilitado
         Me.Direccion = toCliente.Direccion
@@ -21,6 +49,7 @@ Public Class BL_Cliente
         toCliente.NombreDeUsuario = Me.NombreDeUsuario
         toCliente.NombreCompleto = Me.NombreCompleto
         toCliente.Correo = Me.Correo
+        toCliente.Contrasena = Me.Contrasena
         toCliente.Habilitado = Me.Habilitado
         toCliente.Direccion = Me.Direccion
         Return toCliente

@@ -11,6 +11,14 @@ namespace DAO
         ProyectoEntidades entidades = new ProyectoEntidades();
 
         public void cargarCliente(TO_Cliente toCliente) {
+            DAO_Usuario daoUsuario = new DAO_Usuario();
+            TO_Usuarios usuario = new TO_Usuarios();
+            usuario = daoUsuario.cargarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, entidades);
+
+            toCliente.NombreDeUsuario = usuario.NombreDeUsuario;
+            toCliente.Contrasena = usuario.Contrasena;
+            toCliente.Rol = usuario.Rol;
+
             Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
                 toCliente.Habilitado = cliente.Habilitado;
                 toCliente.Direccion = cliente.Direccion;
@@ -36,12 +44,11 @@ namespace DAO
             entidades.SaveChanges();
         }
 
-        public void modificarCliente(TO_Cliente toCliente, string nuevoNombreUsuario, string nuevoPassword)
+        public void modificarDireccionCliente(TO_Cliente toCliente)
         {
             Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
-            cliente.NombreUsuario = nuevoNombreUsuario;
-            DAO_Usuario user = new DAO_Usuario();
-            user.modificarUsuario(toCliente.NombreDeUsuario, nuevoNombreUsuario, nuevoPassword, entidades);
+            cliente.Direccion = toCliente.Direccion;
+
             entidades.SaveChanges();
         }
     }

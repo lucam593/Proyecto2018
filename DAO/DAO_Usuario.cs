@@ -33,9 +33,9 @@ namespace DAO
             entidades.SaveChanges();
         }
 
-        public TO_Usuarios cargarUsuario(string userName, ProyectoEntidades entidades)
+        public TO_Usuarios cargarUsuario(string userName, string password, ProyectoEntidades entidades)
         {
-            var user = (from usr in entidades.Usuarios where usr.NombreUsuario == userName select usr).Single();
+            var user = (from usr in entidades.Usuarios where usr.NombreUsuario.Trim() == userName && usr.Contrasena.Trim() == password select usr).Single();
 
             TO_Usuarios toUser = new TO_Usuarios();
             toUser.NombreDeUsuario = user.NombreUsuario;
