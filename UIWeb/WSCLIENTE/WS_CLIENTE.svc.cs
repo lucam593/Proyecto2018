@@ -43,11 +43,13 @@ namespace UIWeb.WSCLIENTE
             return platillos;
         }
 
-        public bool registrarCliente(string nombreUsuario, string contrasenha, string rol, string direccion, string nombreCompleto, string correo, Boolean habilitado)
+        public List<bool> registrarCliente(string nombreUsuario, string contrasenha, string rol, string direccion, string nombreCompleto, string correo, Boolean habilitado)
         {
             BL_Cliente blCliente = new BL_Cliente();
             blCliente.insertarCliente(nombreUsuario, contrasenha, rol, direccion, nombreCompleto, correo, habilitado);
-            return true;
+            List<bool> lista = new List<bool>();
+            lista.Add(true);
+            return lista;
         }
     }
 }

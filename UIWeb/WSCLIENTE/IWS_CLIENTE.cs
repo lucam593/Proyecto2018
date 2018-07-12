@@ -19,7 +19,7 @@ namespace UIWeb.WSCLIENTE
 
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        bool registrarCliente(String nombreUsuario, String contrasenha, String rol, String direccion, String nombreCompleto, String correo, Boolean habilitado);
+        List<bool> registrarCliente(String nombreUsuario, String contrasenha, String rol, String direccion, String nombreCompleto, String correo, Boolean habilitado);
 
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
