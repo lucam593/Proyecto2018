@@ -18,14 +18,13 @@
 
             var radioTD = document.createElement("td");
             var radio = document.createElement("input");
+            var codigo = this.Codigo;
             radio.type = "button";
             radio.name = "seleccion";
             radio.value = "Detalles";
-            radio.id = this.Codigo;
-            var ide = this.Codigo;
-            $('#' + ide).bind("click",function(){
-                MotrarPlato();
-            })
+            radio.onclick = function () {
+                MotrarPlato(codigo);
+            };
             radioTD.appendChild(radio);
 
             newTR.appendChild(nombreTD);
@@ -36,30 +35,30 @@
         });
     });
     req.fail(function () {
-        alert("Error al conectar con el servicio");
+        alert("Error al conectar con el servicio platos");
     });
 }
 
-function MotrarPlato() {
-  
+function MotrarPlato(ide) {
+    $('#Plato').empty();
     var req = $.ajax({
-        url: "http://localhost:37369/WSCLIENTE/WS_CLIENTE.svc/platoxCod?cod=1",
+        url: "http://localhost:37369/WSCLIENTE/WS_CLIENTE.svc/platoxCod?cod=" + ide,
         timeout: 10000,
         dataType: "jsonp"
     });
 
     req.done(function (datos) {
-
+        $.each(datos, function () {
             var newTR = document.createElement("tr");
 
             var nombreTD = document.createElement("td");
             nombreTD.textContent = this.Nombre;
 
             var descriptionTD = document.createElement("td");
-            descriptionTD.textContent = this.Description;
+            descriptionTD.textContent = this.Descripcion;
 
             var precioTD = document.createElement("td");
-            precioTD.textContent = this.Precio;
+            precioTD.textContent = "Precio $" + this.Precio;
 
             var fotoTD = document.createElement("td");
             var fotoIMG = document.createElement("img");
@@ -75,7 +74,8 @@ function MotrarPlato() {
 
             $('#Plato').append(newTR);
         });
+    });
     req.fail(function () {
-        alert("Error al conectar con el servicio");
+        alert("Error al conectar con el servicio plato");
     });
 }
