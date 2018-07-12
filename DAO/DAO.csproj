@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="DAOCliente.cs" />
     <Compile Include="DAOPlato.cs" />
+    <Compile Include="DAO_Estado.cs" />
     <Compile Include="DAO_Pedido.cs" />
     <Compile Include="DAO_Usuario.cs" />
     <Compile Include="DetallePedido.cs">

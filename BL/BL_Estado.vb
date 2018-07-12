@@ -20,4 +20,25 @@ Public Class BL_Estado
 
         Return toEstado
     End Function
+
+    Public Function cargarEstados() As List(Of BL_Estado)
+        Dim daoEstados As New DAO_Estado()
+        Dim estados As New List(Of BL_Estado)
+
+        For Each x In daoEstados.cargarEstados()
+            Dim estado As New BL_Estado
+            estado.Indice = x.Indice
+            estado.NombreEstado = x.NombreEstado
+            estado.LimiteMinutos = x.LimiteMinutos
+            estados.Add(estado)
+        Next
+        Return estados
+    End Function
+
+    Public Sub modificarEstado(indice As String, tiempo As Short)
+        Dim daoEstados As New DAO_Estado()
+
+        daoEstados.modificarEstado(indice, tiempo)
+
+    End Sub
 End Class

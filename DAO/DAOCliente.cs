@@ -36,6 +36,37 @@ namespace DAO
             entidades.SaveChanges();
         }
 
+        public List<TO_Cliente> cargarClientes()
+        {
+            var ent = new ProyectoEntidades();
+            var consulta = from c in ent.Clientes select c;
+            var list = consulta.ToList();
+
+            List<TO_Cliente> toclientes = new List<TO_Cliente>();
+
+            foreach (var item in list)
+            {
+                
+                    TO_Cliente cliente = new TO_Cliente();
+                cliente.NombreDeUsuario = item.NombreUsuario;
+                cliente.NombreCompleto = item.Nombre_Completo;
+                cliente.Correo = item.Correo;
+                cliente.Direccion = item.Direccion;
+                cliente.Habilitado = item.Habilitado;
+                    toclientes.Add(cliente);
+                
+            }
+            return toclientes;
+        }
+
+        public void modificarEstado(string nombre, bool ck)
+        {
+            ProyectoEntidades entidades = new ProyectoEntidades();
+            Cliente cliente = (from cli in entidades.Clientes where cli.NombreUsuario == nombre select cli).Single();
+            cliente.Habilitado = ck;
+            entidades.SaveChanges();
+        }
+
         public void modificarCliente(TO_Cliente toCliente, string nuevoNombreUsuario, string nuevoPassword)
         {
             Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
