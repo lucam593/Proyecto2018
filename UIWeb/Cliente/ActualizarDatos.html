@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--
+        Aqui se explota el WS para agregar clientes.
+             (correo electrónico, nombre completo,
+    dirección física y contraseña)
+        -->
+    <div class="text-center">
+        <img src="logoRestaurante.jpg" class="img-fluid">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-md-10 p-3 mb-2 bg-secondary text-white text-center">
+                <label>
+                    Nombre de Usuario:
+                </label>
+                <br />
+                <input id="txtUserName" type="text" />
+                <br />
+                <label>
+                    Nueva Nombre completo:
+                </label>
+                <br />
+                <input id="txtName" type="text" />
+                <br />
+                <label>
+                    Nueva Dirección Fisica:
+                </label>
+                <br />
+                <input id="txtDireccion" type="text" />
+                <br />
+                <label>
+                    Contraseña:
+                </label>
+                <br />
+                <input id="txtPass" type="password" />
+                <br />
+                <br />
+                <input id="btnActualizar" class="btn btn-dark" type="button" value="Actualizar datos" onclick="ActualizarDatos(txtUserName.innerText, txtName.innerText, txtDireccion.innerText, txtPass.innerText)"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

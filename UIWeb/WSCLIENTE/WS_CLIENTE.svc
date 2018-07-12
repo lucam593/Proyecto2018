@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="UIWeb.WSCLIENTE.WS_CLIENTE" CodeBehind="WS_CLIENTE.svc.cs" %>

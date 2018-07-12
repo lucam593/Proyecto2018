@@ -25,5 +25,30 @@ namespace UIWeb.REST
              plato.cargarPlato((short) cod);
             return plato;
         }
+
+        public void registrarPedido(string nombreCliente, List<string> listaPlatos, string cantidad)
+        {
+            BL_Pedido blPedido = new BL_Pedido();
+
+            foreach (var item in listaPlatos)
+            {
+                BL_DetallePedido tempDetPedido = new BL_DetallePedido();
+                BL_Plato tempPlato = new BL_Plato();
+                tempPlato.cargarPlato(short.Parse(item));
+                tempDetPedido.Cantidad = short.Parse(cantidad);
+                tempDetPedido.Plato = tempPlato;
+                blPedido.DetallePedido.Add(tempDetPedido);
+            }
+
+            blPedido.Cliente.NombreDeUsuario = nombreCliente;
+
+            blPedido.ingresarPedido();
+
+        }
+
+
+
+
+
     }
 }

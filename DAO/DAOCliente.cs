@@ -11,6 +11,14 @@ namespace DAO
         ProyectoEntidades entidades = new ProyectoEntidades();
 
         public void cargarCliente(TO_Cliente toCliente) {
+            DAO_Usuario daoUsuario = new DAO_Usuario();
+            TO_Usuarios usuario = new TO_Usuarios();
+            usuario = daoUsuario.cargarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, entidades);
+
+            toCliente.NombreDeUsuario = usuario.NombreDeUsuario;
+            toCliente.Contrasena = usuario.Contrasena;
+            toCliente.Rol = usuario.Rol;
+
             Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
                 toCliente.Habilitado = cliente.Habilitado;
                 toCliente.Direccion = cliente.Direccion;
@@ -20,23 +28,33 @@ namespace DAO
 
         public void insertarCliente(TO_Cliente toCliente)
         {
+            try
+            {
+                DAO_Usuario user = new DAO_Usuario();
+                user.insertarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, "Cliente", entidades);
 
-            DAO_Usuario user = new DAO_Usuario();
-            user.insertarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, "Cliente", entidades);
+                Cliente cliente = new Cliente();
+                cliente.NombreUsuario = toCliente.NombreDeUsuario;
 
-            Cliente cliente = new Cliente();
-            cliente.NombreUsuario = toCliente.NombreDeUsuario;
+                cliente.Correo = toCliente.Correo;
+                cliente.Direccion = toCliente.Direccion;
+                cliente.Habilitado = toCliente.Habilitado;
+                cliente.Nombre_Completo = toCliente.NombreCompleto;
 
-            cliente.Correo = toCliente.Correo;
-            cliente.Direccion = toCliente.Direccion;
-            cliente.Habilitado = toCliente.Habilitado;
-            cliente.Nombre_Completo = toCliente.NombreCompleto;
-            
-            entidades.Clientes.Add(cliente);
-            entidades.SaveChanges();
+                entidades.Clientes.Add(cliente);
+                entidades.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
-        public List<TO_Cliente> cargarClientes()
+
+  
+   public List<TO_Cliente> cargarClientes()
         {
             var ent = new ProyectoEntidades();
             var consulta = from c in ent.Clientes select c;
@@ -70,9 +88,12 @@ namespace DAO
         public void modificarCliente(TO_Cliente toCliente, string nuevoNombreUsuario, string nuevoPassword)
         {
             Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
-            cliente.NombreUsuario = nuevoNombreUsuario;
-            DAO_Usuario user = new DAO_Usuario();
-            user.modificarUsuario(toCliente.NombreDeUsuario, nuevoNombreUsuario, nuevoPassword, entidades);
+            cliente.Nombre_Completo = toCliente.NombreCompleto;
+            cliente.Direccion = toCliente.Direccion;
+
+            DAO_Usuario daoUsuario = new DAO_Usuario();
+            daoUsuario.modificarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, entidades);
+
             entidades.SaveChanges();
         }
     }
