@@ -1,6 +1,6 @@
 ﻿function MotrarPlatos() {
     var req = $.ajax({
-        url: "http://localhost:37369/WSCLIENTE/WS_CLIENTE.svc/listaPlatos",
+        url: "http://necrotavo-001-site1.ftempurl.com/WSCLIENTE/WS_CLIENTE.svc/listaPlatos",
         timeout: 10000,
         dataType: "jsonp"
     });
@@ -42,7 +42,7 @@
 function MotrarPlato(ide) {
     $('#Plato').empty();
     var req = $.ajax({
-        url: "http://localhost:37369/WSCLIENTE/WS_CLIENTE.svc/platoxCod?cod=" + ide,
+        url: "http://necrotavo-001-site1.ftempurl.com/WSCLIENTE/WS_CLIENTE.svc/platoxCod?cod=" + ide,
         timeout: 10000,
         dataType: "jsonp"
     });
