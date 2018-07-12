@@ -21,7 +21,7 @@
                     <asp:Label Text='<%# Eval("Nombre") %>'  runat="server"></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtNombre" Enabled="false" CssClass="form-control" runat="server" Text='<%# Eval("Nombre") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server" Text='<%# Eval("Nombre") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtNombrefoot" CssClass="form-control" runat="server" ></asp:TextBox>

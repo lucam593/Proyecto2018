@@ -109,13 +109,14 @@ namespace UIWeb.Admin
         {
             try
             {
+                
                 platos.modificarUsuario(
                      Convert.ToInt16( gvPlatos.DataKeys[e.RowIndex].Value.ToString()),
-                    (gvPlatos.FooterRow.FindControl("txtNombre") as TextBox).Text.Trim(),
-                            (gvPlatos.FooterRow.FindControl("txtDescripcion") as TextBox).Text.Trim(),
-                            (Convert.ToDouble((gvPlatos.FooterRow.FindControl("txtPrecio") as TextBox).Text.Trim())),
-                             (gvPlatos.FooterRow.FindControl("txtFotografia") as TextBox).Text.Trim(),
-                             (gvPlatos.FooterRow.FindControl("ckHabilitado") as CheckBox).Checked);
+                    (gvPlatos.Rows[e.RowIndex].FindControl("txtNombre") as TextBox).Text.Trim(),
+                            (gvPlatos.Rows[e.RowIndex].FindControl("txtDescripcion") as TextBox).Text.Trim(),
+                            (Convert.ToDouble((gvPlatos.Rows[e.RowIndex].FindControl("txtPrecio") as TextBox).Text.Trim())),
+                             (gvPlatos.Rows[e.RowIndex].FindControl("txtFotografia") as TextBox).Text.Trim(),
+                             (gvPlatos.Rows[e.RowIndex].FindControl("ckHabilitado") as CheckBox).Checked);
                 gvPlatos.EditIndex = -1;
                 cargarPlatos();
                 lblMessageExito.Text = "Se modificó correctamente";
