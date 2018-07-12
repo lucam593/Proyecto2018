@@ -31,6 +31,6 @@ namespace UIWeb.WSCLIENTE
 
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        BL_Plato platoxCod(int cod);
+        List<BL_Plato> platoxCod(int cod);
     }
 }

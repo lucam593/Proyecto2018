@@ -33,11 +33,13 @@ namespace UIWeb.WSCLIENTE
             return true;
         }
 
-        public BL_Plato platoxCod(int cod)
+        public List<BL_Plato> platoxCod(int cod)
         {
             BL_Plato plato = new BL_Plato();
             plato.cargarPlato((short)cod);
-            return plato;
+            List<BL_Plato> platillos = new List<BL_Plato>();
+            platillos.Add(plato);
+            return platillos;
         }
 
         public bool registrarCliente(string nombreUsuario, string contrasenha, string rol, string direccion, string nombreCompleto, string correo, Boolean habilitado)
