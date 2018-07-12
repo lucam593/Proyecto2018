@@ -92,6 +92,7 @@
     <Content Include="Cocina\PedidosCocina.aspx" />
     <Content Include="Images\BackgroundTabla.jpg" />
     <Content Include="Images\logoRestaurante.jpg" />
+    <Content Include="index.aspx" />
     <Content Include="REST\WSPlatos.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -176,6 +177,13 @@
     <Compile Include="Cocina\PedidosCocina.aspx.designer.cs">
       <DependentUpon>PedidosCocina.aspx</DependentUpon>
     </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -197,6 +205,7 @@
     <Content Include="Principal.Master" />
     <Content Include="packages.config" />
     <Content Include="Admin\AdminMenu.Master" />
+    <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
