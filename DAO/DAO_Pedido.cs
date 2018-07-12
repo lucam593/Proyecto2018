@@ -36,6 +36,30 @@ namespace DAO
             }
         }
 
+        public List<TO_Pedido> cargarEstados()
+        {
+            var ent = new ProyectoEntidades();
+            var consulta = from c in ent.Pedidoes select c;
+            var list = consulta.ToList();
+
+            List<TO_Pedido> toestados = new List<TO_Pedido>();
+
+            foreach (var item in list)
+            {
+                toestados.Add(new TO_Pedido((short)item.NumeroPedido,item.Cliente, item.Estado,item.Fecha));
+            }
+            return toestados;
+        }
+
+        public void modificarEstado(short v1, string v2)
+        {
+            var pedido = (from aux in entidades.Pedidoes where aux.NumeroPedido == v1 select aux).Single();
+
+            pedido.Estado = v2;
+
+            entidades.SaveChanges();
+        }
+
         public void caragarPedidosDeCliente(TO_ListaPedidos listaPedidos, TO_Cliente toCliente)
         {
             listaPedidos.listaPedidos = new List<TO_Pedido>();

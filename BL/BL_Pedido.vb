@@ -21,6 +21,22 @@ Public Class BL_Pedido
 
     End Sub
 
+    Public Function cargarPedidos() As List(Of BL_Pedido)
+        Dim daoPedido As New DAO_Pedido()
+        Dim pedidos As New List(Of BL_Pedido)
+
+        For Each x In daoPedido.cargarEstados()
+            Dim pedido As New BL_Pedido
+            pedido.NumeroPedido = x.NumeroPedido
+            pedido.Cliente = New BL_Cliente(x.Cliente.NombreDeUsuario, x.Cliente.NombreCompleto, x.Cliente.Correo, x.Cliente.Direccion, x.Cliente.Habilitado)
+            pedido.Estado = New BL_Estado(x.Estado.NombreEstado)
+            pedido.Fecha = x.Fecha
+
+            pedidos.Add(pedido)
+        Next
+        Return pedidos
+    End Function
+
     Public Function getEstado() As String
         Dim daoPedido As New DAO_Pedido()
         Return daoPedido.getEstado(Me.NumeroPedido)
@@ -29,6 +45,11 @@ Public Class BL_Pedido
     Public Sub entregarPedido(numPedido As Int16)
         Dim daoPedido As New DAO_Pedido
         daoPedido.alterarEstadoPedido(numPedido, "Entregado")
+    End Sub
+
+    Public Sub modificarEstado(v1 As Short, v2 As String)
+        Dim daoPed As New DAO_Pedido
+        daoPed.modificarEstado(v1, v2)
     End Sub
 
     Public Sub anularPedido(numPedido As Int16)

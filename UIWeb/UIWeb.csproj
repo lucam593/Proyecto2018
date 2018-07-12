@@ -71,7 +71,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cliente\ActualizarDatos.html" />
+
+     <Content Include="Cliente\ActualizarDatos.html" />
     <Content Include="Cliente\AdministrarDatos.js" />
     <Content Include="Cliente\Carrito.html" />
     <Content Include="Cliente\Index.html" />
@@ -80,13 +81,19 @@
     <Content Include="Cliente\Menu.html" />
     <Content Include="Cliente\Registro.html" />
     <Content Include="Cliente\ScriptCliente.js" />
+    <Content Include="Admin\adminClientes.aspx" />
+    <Content Include="Admin\adminEstados.aspx" />
+    <Content Include="Admin\adminInicio.aspx" />
+    <Content Include="Admin\adminPedidos.aspx" />
+    <Content Include="Admin\adminPlatos.aspx" />
+    <Content Include="Admin\adminUsuarios.aspx" />
+    <Content Include="Admin\IniSesion.aspx" />
     <Content Include="Cocina\Cocina.aspx" />
     <Content Include="Cocina\PedidoCocina.aspx" />
+    <Content Include="Cocina\PedidosCocina.aspx" />
     <Content Include="Images\BackgroundTabla.jpg" />
     <Content Include="Images\logoRestaurante.jpg" />
-    <Content Include="LoginAdmin.aspx" />
-    <Content Include="Platos.aspx" />
-    <Content Include="pruebaEjemplo.aspx" />
+
     <Content Include="REST\WSPlatos.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -94,19 +101,61 @@
     <Content Include="WSCLIENTE\WS_CLIENTE.svc" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrador.Master.cs">
-      <DependentUpon>Administrador.Master</DependentUpon>
+    <Compile Include="Admin\adminClientes.aspx.cs">
+      <DependentUpon>adminClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Administrador.Master.designer.cs">
-      <DependentUpon>Administrador.Master</DependentUpon>
+    <Compile Include="Admin\adminClientes.aspx.designer.cs">
+      <DependentUpon>adminClientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminMenu.Master.cs">
+    <Compile Include="Admin\adminEstados.aspx.cs">
+      <DependentUpon>adminEstados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminEstados.aspx.designer.cs">
+      <DependentUpon>adminEstados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\adminInicio.aspx.cs">
+      <DependentUpon>adminInicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminInicio.aspx.designer.cs">
+      <DependentUpon>adminInicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminMenu.Master.cs">
       <DependentUpon>AdminMenu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminMenu.Master.designer.cs">
+    <Compile Include="Admin\AdminMenu.Master.designer.cs">
       <DependentUpon>AdminMenu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\adminPedidos.aspx.cs">
+      <DependentUpon>adminPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminPedidos.aspx.designer.cs">
+      <DependentUpon>adminPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\adminPlatos.aspx.cs">
+      <DependentUpon>adminPlatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminPlatos.aspx.designer.cs">
+      <DependentUpon>adminPlatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\adminUsuarios.aspx.cs">
+      <DependentUpon>adminUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\adminUsuarios.aspx.designer.cs">
+      <DependentUpon>adminUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\IniSesion.aspx.cs">
+      <DependentUpon>IniSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\IniSesion.aspx.designer.cs">
+      <DependentUpon>IniSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cocina\Cocina.aspx.cs">
       <DependentUpon>Cocina.aspx</DependentUpon>
@@ -122,19 +171,12 @@
     <Compile Include="Cocina\PedidoCocina.aspx.designer.cs">
       <DependentUpon>PedidoCocina.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LoginAdmin.aspx.cs">
-      <DependentUpon>LoginAdmin.aspx</DependentUpon>
+    <Compile Include="Cocina\PedidosCocina.aspx.cs">
+      <DependentUpon>PedidosCocina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LoginAdmin.aspx.designer.cs">
-      <DependentUpon>LoginAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Platos.aspx.cs">
-      <DependentUpon>Platos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Platos.aspx.designer.cs">
-      <DependentUpon>Platos.aspx</DependentUpon>
+    <Compile Include="Cocina\PedidosCocina.aspx.designer.cs">
+      <DependentUpon>PedidosCocina.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
@@ -162,9 +204,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Principal.Master" />
-    <Content Include="Administrador.Master" />
-    <Content Include="AdminMenu.Master" />
     <Content Include="packages.config" />
+    <Content Include="Admin\AdminMenu.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

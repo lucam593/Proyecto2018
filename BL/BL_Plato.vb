@@ -46,4 +46,18 @@ Public Class BL_Plato
         Return toPlato
     End Function
 
+    Public Sub guardarPlato(nombre As String, desc As String, precio As Double, foto As String, checked As Boolean)
+        Dim daoPlatos = New DAOPlato
+        daoPlatos.guardarPlato(nombre, desc, precio, foto, checked)
+    End Sub
+
+    Public Sub modificarUsuario(cod As Int16, nombre As String, desc As String, precio As Double, foto As String, checked As Boolean)
+        Dim daoPlatos = New DAOPlato
+        daoPlatos.modificarPlato(cod, nombre, desc, precio, foto, checked)
+    End Sub
+
+    Public Sub eliminarPlato(cod As Short)
+        Dim daoPlatos = New DAOPlato
+        daoPlatos.eliminarPlato(cod)
+    End Sub
 End Class

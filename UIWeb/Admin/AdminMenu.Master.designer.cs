@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UIWeb {
+namespace UIWeb.Admin {
     
     
-    public partial class Administrador {
+    public partial class AdminMenu {
         
         /// <summary>
         /// head control.
@@ -20,6 +20,15 @@ namespace UIWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        
+        /// <summary>
+        /// usuarioID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usuarioID;
         
         /// <summary>
         /// form1 control.
