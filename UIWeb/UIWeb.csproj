@@ -80,6 +80,7 @@
     <Content Include="Admin\IniSesion.aspx" />
     <Content Include="Cocina\Cocina.aspx" />
     <Content Include="Cocina\PedidoCocina.aspx" />
+    <Content Include="Cocina\PedidosCocina.aspx" />
     <Content Include="Images\BackgroundTabla.jpg" />
     <Content Include="Images\logoRestaurante.jpg" />
     <Content Include="REST\WSPlatos.svc" />
@@ -157,6 +158,13 @@
     </Compile>
     <Compile Include="Cocina\PedidoCocina.aspx.designer.cs">
       <DependentUpon>PedidoCocina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cocina\PedidosCocina.aspx.cs">
+      <DependentUpon>PedidosCocina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cocina\PedidosCocina.aspx.designer.cs">
+      <DependentUpon>PedidosCocina.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>

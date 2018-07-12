@@ -59,11 +59,52 @@ namespace DAO
             return toUser;
         }
 
+        public void modificarUsuarioAd(string usuario, string cont, string rol)
+        {
+            ProyectoEntidades entidades = new ProyectoEntidades();
+            Usuario user = (from usr in entidades.Usuarios where usr.NombreUsuario == usuario select usr).Single();
+            user.Rol = rol;
+            user.Contrasena = cont;
+            entidades.SaveChanges();
+        }
+
+        public void eliminarUsuario(string usuario)
+        {
+            ProyectoEntidades entidades = new ProyectoEntidades();
+            Usuario user = (from usr in entidades.Usuarios where usr.NombreUsuario == usuario select usr).Single();
+
+            entidades.Usuarios.Remove(user);
+            entidades.SaveChanges();
+        }
+
         public void modificarUsuario(string userName, string nuevoUserName, string nuevoPassword, ProyectoEntidades entidades)
         {
             Usuario user = (from usr in entidades.Usuarios where usr.NombreUsuario == userName select usr).Single();
             user.NombreUsuario = nuevoUserName;
             user.Contrasena = nuevoPassword;
         }
+
+        public List<TO_Usuarios> cargarUsuarios()
+        {
+            var ent = new ProyectoEntidades();
+            var consulta = from c in ent.Usuarios select c;
+            var list = consulta.ToList();
+
+            List<TO_Usuarios> toUsuarios = new List<TO_Usuarios>();
+
+            foreach (var item in list)
+            {
+                if (item.Rol != "Cliente")
+                {
+                TO_Usuarios toUser = new TO_Usuarios();
+                toUser.Rol = item.Rol;
+                toUser.NombreDeUsuario = item.NombreUsuario;
+                toUser.Contrasena = item.Contrasena;
+                toUsuarios.Add(toUser);
+                }
+            }
+            return toUsuarios;
+        }
+
     }
 }

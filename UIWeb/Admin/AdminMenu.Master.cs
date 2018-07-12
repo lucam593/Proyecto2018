@@ -11,7 +11,15 @@ namespace UIWeb.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            usuarioID.InnerText = "UsuarioActivo";
+            if (Session["adminss"] != null)
+            {
+                
+                usuarioID.InnerText = " " + Session["adminss"].ToString();
+            } else
+            {
+                Response.Redirect("IniSesion.aspx");
+            }
+            
         }
     }
 }

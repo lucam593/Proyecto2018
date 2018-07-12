@@ -5,106 +5,147 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
+using System.Data;
 
 namespace UIWeb.Admin
 {
     public partial class adminPlatos : System.Web.UI.Page
     {
 
-        private int totalItemSeleccionados = 0;
+        BL_Plato platos = new BL_Plato();
+        ManejadorPlatos manager = new ManejadorPlatos();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                cargarPlatos();
 
 
-                ManejadorPlatos managerP = new ManejadorPlatos();
-                var platos = managerP.cargarPlatos();
-                gvPlatos.DataSource = platos;
-                gvPlatos.DataBind();
             }
-           
-            
-           
-            
+
+
+
+
         }
 
-        protected void gvPlatosUpdated(object sender, GridViewUpdatedEventArgs e)
+        void cargarPlatos()
         {
-            if (e.Exception != null)
+
+            var platoes = manager.cargarPlatos();
+
+
+
+            if (platoes.Count > 0)
             {
-                lblInfo.Text = " ¡Modificación realizada OK! ";
-            lblInfo.CssClass = "label label-success";
+                gvPlatos.DataSource = platoes;
+                gvPlatos.DataBind();
             }
             else
             {
-                lblInfo.Text = " ¡Se ha producido un error al intentar modificar el cliente! ";
-                lblInfo.CssClass = "label label-danger";
-                e.ExceptionHandled = true;
+                DataTable databl = new DataTable();
+                databl.Rows.Add(databl.NewRow());
+                gvPlatos.DataSource = databl;
+                gvPlatos.DataBind();
+                gvPlatos.Rows[0].Cells.Clear();
+                gvPlatos.Rows[0].Cells.Add(new TableCell());
+                gvPlatos.Rows[0].Cells[0].ColumnSpan = databl.Columns.Count;
+                gvPlatos.Rows[0].Cells[0].Text = "!No se encontraron datos!";
+                gvPlatos.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
             }
         }
 
-        protected void gvPlatosDeleted(object sender, GridViewDeletedEventArgs e)
+        protected void gvPlatos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.Exception != null)
+            try
             {
-                lblInfo.Text = " ¡Cliente/s eliminado/s OK! ";
-            lblInfo.CssClass = "label label-success";
-            } else
-            {
-                lblInfo.Text = " ¡Se ha producido un error al intentar elimnar el/los cliente/s! ";
-            lblInfo.CssClass = "label label-danger";
-            e.ExceptionHandled = true;
-            }
-        }
-
-        protected void PageDropDownList_SelectedIndexChanged(object sender , EventArgs e)
-        {
-            GridViewRow filapag = gvPlatos.BottomPagerRow;
-            DropDownList listapag = (DropDownList) filapag.Cells[0].FindControl("PageDropDownList");
-            gvPlatos.PageIndex = listapag.SelectedIndex;
-            lblInfo.Text = "";
-        }
-
-
-        protected void gvPlatosEditing(object sender, GridViewEditEventArgs e)
-        {
-            lblInfo.Text = "";
-        }
-
-        protected void gvPlatosDataBound(object sender, EventArgs e)
-        {
-            GridViewRow pagerRow = gvPlatos.BottomPagerRow;
-            DropDownList ddlist = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
-            Label pagelb = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
-
-            if (ddlist != null)
-            {
-                for (int i = 0; i < gvPlatos.PageCount -1; i++)
+                if (e.CommandName.Equals("AddNew"))
                 {
-                    int pagerN = i + 1;
-                    ListItem item = new ListItem(pagerN.ToString());
-                    if (i == gvPlatos.PageIndex)
+
+                   
+                        platos.guardarPlato(
+                            (gvPlatos.FooterRow.FindControl("txtNombrefoot") as TextBox).Text.Trim(),
+                            (gvPlatos.FooterRow.FindControl("txtDescripcionfoot") as TextBox).Text.Trim(),
+                            (Convert.ToDouble((gvPlatos.FooterRow.FindControl("txtPreciofoot") as TextBox).Text.Trim())),
+                             (gvPlatos.FooterRow.FindControl("txtFotografiafoot") as TextBox).Text.Trim(),
+                             (gvPlatos.FooterRow.FindControl("ckHabilitadofoot") as CheckBox).Checked);
+
+                        lblMessageExito.Text = "Se registro correctamente";
+                        lblMessageFail.Text = "";
+                    }
+                    else
                     {
-                        item.Selected = true;
+                        lblMessageExito.Text = "";
+                        lblMessageFail.Text = "Error al guardar el plato";
                     }
 
-                    ddlist.Items.Add(item);
-
-                }
+                
+                cargarPlatos();
+            }
+            catch (Exception ex)
+            {
+                lblMessageExito.Text = "";
+                lblMessageFail.Text = "" + ex.Message;
             }
 
-            if (pagelb != null)
+        }
+
+        protected void gvPlatos_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvPlatos.EditIndex = e.NewEditIndex;
+            cargarPlatos();
+            lblMessageExito.Text = "";
+            lblMessageFail.Text = "";
+        }
+
+        protected void gvPlatos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvPlatos.EditIndex = -1;
+            cargarPlatos();
+            lblMessageExito.Text = "";
+            lblMessageFail.Text = "";
+        }
+
+        protected void gvPlatos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
             {
-                int currentP = gvPlatos.PageIndex + 1;
-                pagelb.Text = "Página " + currentP.ToString() + "de " + gvPlatos.PageCount.ToString();
+                platos.modificarUsuario(
+                     Convert.ToInt16( gvPlatos.DataKeys[e.RowIndex].Value.ToString()),
+                    (gvPlatos.FooterRow.FindControl("txtNombre") as TextBox).Text.Trim(),
+                            (gvPlatos.FooterRow.FindControl("txtDescripcion") as TextBox).Text.Trim(),
+                            (Convert.ToDouble((gvPlatos.FooterRow.FindControl("txtPrecio") as TextBox).Text.Trim())),
+                             (gvPlatos.FooterRow.FindControl("txtFotografia") as TextBox).Text.Trim(),
+                             (gvPlatos.FooterRow.FindControl("ckHabilitado") as CheckBox).Checked);
+                gvPlatos.EditIndex = -1;
+                cargarPlatos();
+                lblMessageExito.Text = "Se modificó correctamente";
+                lblMessageFail.Text = "";
+            }
+            catch (Exception ex)
+            {
+                lblMessageExito.Text = "";
+                lblMessageFail.Text = "" + ex.Message;
             }
         }
 
-       
-        protected void chk_HabilitadoChanged(object sender, EventArgs e)
-        { }
+        protected void gvPlatos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
 
-       
+                platos.eliminarPlato(
+                   Convert.ToInt16(gvPlatos.DataKeys[e.RowIndex].Value.ToString()))
+                   ;
+
+                cargarPlatos();
+                lblMessageExito.Text = "Se eliminó correctamente";
+                lblMessageFail.Text = "";
+            }
+            catch (Exception ex)
+            {
+                lblMessageExito.Text = "";
+                lblMessageFail.Text = "" + ex.Message;
+            }
+        }
     }
 }
