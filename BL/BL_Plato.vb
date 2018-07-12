@@ -51,9 +51,9 @@ Public Class BL_Plato
         daoPlatos.guardarPlato(nombre, desc, precio, foto, checked)
     End Sub
 
-    Public Sub modificarUsuario(cod As Int16, nombre As String, desc As String, precio As Double, foto As String, checked As Boolean)
+    Public Sub modificarUsuario(cod As Short, nombre As String, desc As String, precio As Double, foto As String, ch As Boolean)
         Dim daoPlatos = New DAOPlato
-        daoPlatos.modificarPlato(cod, nombre, desc, precio, foto, checked)
+        daoPlatos.modificarPlato(cod, nombre, desc, precio, foto, ch)
     End Sub
 
     Public Sub eliminarPlato(cod As Short)
