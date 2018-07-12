@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="regScript.js"></script>
+
 </head>
 <body>
     <!--
@@ -45,7 +51,12 @@
                 <input id="txtPass" type="password" />
                 <br />
                 <br />
-                <input id="btnRegistrar" class="btn btn-dark" type="button" value="Registrarse" />
+                <input id="btnRegistrar" onclick="logIn(document.getElementById('txtMail').value,
+                                                        document.getElementById('txtPass').value,
+                                                        'Cliente',
+                                                        document.getElementById('txtAddress').value,
+                                                        document.getElementById('txtMail').value,
+                                                        'true')" class="btn btn-dark" type="button" value="Registrarse" />
             </div>
         </div>
     </div>

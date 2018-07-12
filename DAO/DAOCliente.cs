@@ -28,20 +28,28 @@ namespace DAO
 
         public void insertarCliente(TO_Cliente toCliente)
         {
+            try
+            {
+                DAO_Usuario user = new DAO_Usuario();
+                user.insertarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, "Cliente", entidades);
 
-            DAO_Usuario user = new DAO_Usuario();
-            user.insertarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, "Cliente", entidades);
+                Cliente cliente = new Cliente();
+                cliente.NombreUsuario = toCliente.NombreDeUsuario;
 
-            Cliente cliente = new Cliente();
-            cliente.NombreUsuario = toCliente.NombreDeUsuario;
+                cliente.Correo = toCliente.Correo;
+                cliente.Direccion = toCliente.Direccion;
+                cliente.Habilitado = toCliente.Habilitado;
+                cliente.Nombre_Completo = toCliente.NombreCompleto;
 
-            cliente.Correo = toCliente.Correo;
-            cliente.Direccion = toCliente.Direccion;
-            cliente.Habilitado = toCliente.Habilitado;
-            cliente.Nombre_Completo = toCliente.NombreCompleto;
-            
-            entidades.Clientes.Add(cliente);
-            entidades.SaveChanges();
+                entidades.Clientes.Add(cliente);
+                entidades.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public void modificarDireccionCliente(TO_Cliente toCliente)
