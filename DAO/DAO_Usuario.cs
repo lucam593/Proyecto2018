@@ -78,7 +78,7 @@ namespace DAO
             entidades.SaveChanges();
         }
 
-        public void modificarUsuario(string userName, string nuevoUserName, string nuevoPassword, ProyectoEntidades entidades)
+        public void modificarUsuario(string userName, string nuevoPassword, ProyectoEntidades entidades)
         {
             Usuario user = (from usr in entidades.Usuarios where usr.NombreUsuario == userName select usr).Single();
             user.Contrasena = nuevoPassword;

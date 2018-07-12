@@ -40,7 +40,7 @@ Public Class BL_Cliente
         toCliente.NombreCompleto = newNombre
         toCliente.Direccion = newDireccion
         toCliente.Contrasena = newContraseña
-        daoCliente.modificarDireccionCliente(toCliente)
+
         AsignarDesdeTOCliente(toCliente)
     End Sub
 

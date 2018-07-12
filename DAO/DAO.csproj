@@ -114,12 +114,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TO\TO.vbproj">
-      <Project>{0ca5cd27-1cfa-433b-87a9-d329e520441e}</Project>
-      <Name>TO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ModeloRestaurante.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloRestaurante.edmx</DependentUpon>
@@ -130,6 +124,12 @@
       <DependentUpon>ModeloRestaurante.edmx</DependentUpon>
       <LastGenOutput>ModeloRestaurante.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TO\TO.vbproj">
+      <Project>{0ca5cd27-1cfa-433b-87a9-d329e520441e}</Project>
+      <Name>TO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
