@@ -61,24 +61,24 @@ namespace UIWeb.Admin
                 if (e.CommandName.Equals("AddNew"))
                 {
 
-                   
-                        platos.guardarPlato(
-                            (gvPlatos.FooterRow.FindControl("txtNombrefoot") as TextBox).Text.Trim(),
-                            (gvPlatos.FooterRow.FindControl("txtDescripcionfoot") as TextBox).Text.Trim(),
-                            (Convert.ToDouble((gvPlatos.FooterRow.FindControl("txtPreciofoot") as TextBox).Text.Trim())),
-                             (gvPlatos.FooterRow.FindControl("txtFotografiafoot") as TextBox).Text.Trim(),
-                             (gvPlatos.FooterRow.FindControl("ckHabilitadofoot") as CheckBox).Checked);
 
-                        lblMessageExito.Text = "Se registro correctamente";
-                        lblMessageFail.Text = "";
-                    }
-                    else
-                    {
-                        lblMessageExito.Text = "";
-                        lblMessageFail.Text = "Error al guardar el plato";
-                    }
+                    platos.guardarPlato(
+                        (gvPlatos.FooterRow.FindControl("txtNombrefoot") as TextBox).Text.Trim(),
+                        (gvPlatos.FooterRow.FindControl("txtDescripcionfoot") as TextBox).Text.Trim(),
+                        (Convert.ToDouble((gvPlatos.FooterRow.FindControl("txtPreciofoot") as TextBox).Text.Trim())),
+                         (gvPlatos.FooterRow.FindControl("txtFotografiafoot") as TextBox).Text.Trim(),
+                         (gvPlatos.FooterRow.FindControl("ckHabilitadofoot") as CheckBox).Checked);
 
-                
+                    lblMessageExito.Text = "Se registro correctamente";
+                    lblMessageFail.Text = "";
+                }
+                else
+                {
+                    lblMessageExito.Text = "";
+                    lblMessageFail.Text = "Error al guardar el plato";
+                }
+
+
                 cargarPlatos();
             }
             catch (Exception ex)
@@ -109,14 +109,13 @@ namespace UIWeb.Admin
         {
             try
             {
-                
                 platos.modificarUsuario(
-                     Convert.ToInt16( gvPlatos.DataKeys[e.RowIndex].Value.ToString()),
+                    (Convert.ToInt16(gvPlatos.DataKeys[e.RowIndex].Value.ToString())),
                     (gvPlatos.Rows[e.RowIndex].FindControl("txtNombre") as TextBox).Text.Trim(),
-                            (gvPlatos.Rows[e.RowIndex].FindControl("txtDescripcion") as TextBox).Text.Trim(),
-                            (Convert.ToDouble((gvPlatos.Rows[e.RowIndex].FindControl("txtPrecio") as TextBox).Text.Trim())),
-                             (gvPlatos.Rows[e.RowIndex].FindControl("txtFotografia") as TextBox).Text.Trim(),
-                             (gvPlatos.Rows[e.RowIndex].FindControl("ckHabilitado") as CheckBox).Checked);
+                    (gvPlatos.Rows[e.RowIndex].FindControl("txtDescripcion") as TextBox).Text.Trim(),
+                    (Convert.ToDouble((gvPlatos.Rows[e.RowIndex].FindControl("txtPrecio") as TextBox).Text.Trim())),
+                     (gvPlatos.Rows[e.RowIndex].FindControl("txtFotografia") as TextBox).Text.Trim(),
+                    (gvPlatos.Rows[e.RowIndex].FindControl("ckHabilitado") as CheckBox).Checked);
                 gvPlatos.EditIndex = -1;
                 cargarPlatos();
                 lblMessageExito.Text = "Se modificó correctamente";

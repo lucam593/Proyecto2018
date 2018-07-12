@@ -16,8 +16,8 @@
       <br />
         <p class="texto">El Restaurante Elite dio inicio en el 2018 por:</p>
         <p class="texto">Luis Alonso Castro Muñoz B31634</p>
-        <p class="texto">Daniel</p>
-        <p class="texto">Gustavo</p>
+        <p class="texto">Juan daniel Ruiz Araya B66367</p>
+        <p class="texto">Gustavo Palomo Ureña B14877</p>
 <br />
       <p class="texto">  Al servicio de la Universidad de Costa Rica</p>
 
