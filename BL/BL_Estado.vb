@@ -12,6 +12,14 @@ Public Class BL_Estado
         Me.Indice = toEstado.Indice
     End Sub
 
+    Sub New(str As String)
+        Me.NombreEstado = str
+    End Sub
+
+    Sub New()
+
+    End Sub
+
     Public Function Crear_To_Estado() As TO_Estado
         Dim toEstado As New TO_Estado()
         toEstado.NombreEstado = Me.NombreEstado

@@ -9,4 +9,17 @@
         Me.Cliente = New TO_Cliente()
         Me.Estado = New TO_Estado()
     End Sub
+
+    Sub New(num As Int16, cli As String, esta As String, fecha As DateTime)
+        Me.NumeroPedido = num
+        Dim cliente As New TO_Cliente()
+        cliente.NombreDeUsuario = cli
+        Me.Cliente = cliente
+
+        Dim estado As New TO_Estado()
+        estado.NombreEstado = esta
+        Me.Estado = estado
+
+        Me.Fecha = fecha
+    End Sub
 End Class
