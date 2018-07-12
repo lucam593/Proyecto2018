@@ -73,6 +73,7 @@
   <ItemGroup>
     <Content Include="Cliente\Carrito.html" />
     <Content Include="Cliente\Index.html" />
+    <Content Include="Cliente\logoRestaurante.jpg" />
     <Content Include="Cliente\Menu.html" />
     <Content Include="Cliente\Registro.html" />
     <Content Include="Cliente\ScriptCliente.js" />
