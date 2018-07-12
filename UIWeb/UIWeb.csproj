@@ -81,6 +81,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WSCLIENTE\WS_CLIENTE.svc" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrador.Master.cs">
@@ -136,6 +137,10 @@
     <Compile Include="REST\IWSPlatos.cs" />
     <Compile Include="REST\WSPlatos.svc.cs">
       <DependentUpon>WSPlatos.svc</DependentUpon>
+    </Compile>
+    <Compile Include="WSCLIENTE\IWS_CLIENTE.cs" />
+    <Compile Include="WSCLIENTE\WS_CLIENTE.svc.cs">
+      <DependentUpon>WS_CLIENTE.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
