@@ -25,11 +25,12 @@ namespace UIWeb.WSCLIENTE
             return mplatos.cargarPlatos();
         }
 
-        public bool modificarDireccionCliente(string nombreUsuario, string direccion)
+        public bool modificarDireccionCliente(string nombreUsuario, string newNombre, string newDireccion, string newContrasenha)
+
         {
             BL_Cliente blCliente = new BL_Cliente();
             blCliente.NombreDeUsuario = nombreUsuario;
-            blCliente.modificarDireccionCliente(direccion);
+            blCliente.modificarDireccionCliente(newNombre, newDireccion, newContrasenha);
             return true;
         }
 

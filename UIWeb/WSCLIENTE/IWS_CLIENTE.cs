@@ -23,7 +23,7 @@ namespace UIWeb.WSCLIENTE
 
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        bool modificarDireccionCliente(String nombreUsuario, String direccion);
+        bool modificarDireccionCliente(string nombreUsuario, string newNombreUsuario, string direccion, string contraseña);
 
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]

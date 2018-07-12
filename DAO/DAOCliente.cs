@@ -47,7 +47,11 @@ namespace DAO
         public void modificarDireccionCliente(TO_Cliente toCliente)
         {
             Cliente cliente = (from cl in entidades.Clientes where cl.NombreUsuario == toCliente.NombreDeUsuario select cl).Single();
+            cliente.Nombre_Completo = toCliente.NombreCompleto;
             cliente.Direccion = toCliente.Direccion;
+
+            DAO_Usuario daoUsuario = new DAO_Usuario();
+            daoUsuario.modificarUsuario(toCliente.NombreDeUsuario, toCliente.Contrasena, entidades);
 
             entidades.SaveChanges();
         }

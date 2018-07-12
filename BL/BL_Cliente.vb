@@ -33,11 +33,13 @@ Public Class BL_Cliente
         AsignarDesdeTOCliente(toCliente)
     End Sub
 
-    Public Sub modificarDireccionCliente(newDireccion As String)
+    Public Sub modificarDireccionCliente(newNombre As String, newDireccion As String, newContraseña As String)
         Dim daoCliente As New DAOCliente()
         Dim toCliente As New TO_Cliente()
         toCliente.NombreDeUsuario = Me.NombreDeUsuario
+        toCliente.NombreCompleto = newNombre
         toCliente.Direccion = newDireccion
+        toCliente.Contrasena = newContraseña
         daoCliente.modificarDireccionCliente(toCliente)
         AsignarDesdeTOCliente(toCliente)
     End Sub
